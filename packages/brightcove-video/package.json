@@ -1,7 +1,9 @@
 {
   "name": "@timescomponents/brightcove-video",
   "version": "0.0.1",
-  "main": "brightcove-video.js",
+  "main": "brightcove-video.es5.web.js",
+  "jsnext:main": "brightcove-video.web.js",
+  "module": "brightcove-video.web.js",
   "scripts": {
     "flow": "node_modules/flow-bin/cli.js",
     "test:dev": "jest __tests__/ --bail --verbose --watch",
@@ -40,8 +42,7 @@
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
     "react-native": "0.44.2",
-    "react-test-renderer": "15.5.4",
-    "webpack": "2.6.1"
+    "react-test-renderer": "15.5.4"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
