@@ -11,6 +11,22 @@ const videoId = "4084164751001";
 
 const firstArgJSONAction = decorateAction([args => [JSON.stringify(args[0])]]);
 
+class TealiumScript extends Component {
+  componentWillMount() {
+    const account = "newsinternational";
+    const profile = "thetimes.d.desktop";
+    const env = "dev";
+    const script = document.createElement("script");
+
+    script.src = `https://tags.tiqcdn.com/utag/${account}/${profile}/${env}/utag.js`;
+    document.body.appendChild(script);
+  }
+
+  render() {
+    return null;
+  }
+}
+
 class VideoAddTest extends Component {
   constructor(props) {
     super(props);
@@ -145,4 +161,14 @@ storiesOf("BrightcoveVideo", module)
       accountId={accountId}
       onChange={firstArgJSONAction("change")}
     />
+  )
+  .add("With tealium on the page", () =>
+    <View>
+      <TealiumScript />
+      <BrightcoveVideo
+        policyId={policyId}
+        videoId={videoId}
+        accountId={accountId}
+      />
+    </View>
   );
