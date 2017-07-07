@@ -40,6 +40,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-dom": "15.5.4",
+    "react-in-style": "^0.21.0",
     "react-native-web": "0.0.96"
   },
   "_timesComponentsCliVariables": {
