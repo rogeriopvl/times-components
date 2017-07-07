@@ -127,7 +127,7 @@ exports[`Markup Native renders nested tags 1`] = `
     allowFontScaling={true}
     ellipsizeMode="tail"
   >
-    Some text is here 
+    Some text is here
   </Text>
   <View>
     <Text
@@ -135,7 +135,7 @@ exports[`Markup Native renders nested tags 1`] = `
       allowFontScaling={true}
       ellipsizeMode="tail"
     >
-      and there is some 
+      and there is some
     </Text>
     <View>
       <Text
@@ -143,7 +143,7 @@ exports[`Markup Native renders nested tags 1`] = `
         allowFontScaling={true}
         ellipsizeMode="tail"
       >
-        more text 
+        more text
       </Text>
       <Text
         accessible={true}
@@ -233,7 +233,7 @@ exports[`Markup Native renders wrapped tags 1`] = `
   allowFontScaling={true}
   ellipsizeMode="tail"
 >
-  Camilla Long is 
+  Camilla Long is
   <Text
     accessible={true}
     allowFontScaling={true}
@@ -246,7 +246,7 @@ exports[`Markup Native renders wrapped tags 1`] = `
   >
     the Sunday Times
   </Text>
-   film critic. She also writes interviews and a column, and was named 
+   film critic. She also writes interviews and a column, and was named
   <Text
     accessible={true}
     allowFontScaling={true}
