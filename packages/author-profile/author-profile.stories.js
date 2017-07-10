@@ -8,7 +8,7 @@ storiesOf("AuthorProfile", module).add("AuthorProfile", () =>
   <AuthorProfile
     name={example.name}
     jobTitle={example.jobTitle}
-    biography={example.biography}
+    biography={JSON.parse(example.biography)}
     image={example.image}
     twitter={example.twitter}
     articleCount={example.articles.count}
