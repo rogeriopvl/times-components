@@ -119,7 +119,7 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-apollo-client@^1.4.0:
+apollo-client@^1.4.0, apollo-client@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-1.7.0.tgz#3d6fdf6ead0a07d3e02d32d9191f26cbcfb6e4f6"
   dependencies:

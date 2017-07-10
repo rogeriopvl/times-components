@@ -1,11 +1,9 @@
-import React from "react";
-import ApolloClient, { createNetworkInterface } from "apollo-client";
-import { ApolloProvider } from "react-apollo";
+import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
-const TrainerQuery = gql`
-    query ArticleQuery {
-        author(slug: "fiona-hamilton") {
+const articleQuery = gql`
+    query ArticleQuery($slug: Slug!) {
+        author(slug: $slug) {
             jobTitle
             biography
             image
@@ -40,16 +38,10 @@ const TrainerQuery = gql`
     }
 `;
 
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface({
-    uri: "http://localhost:4000/graphql"
-  })
+export default ({ slug }) => graphql(articleQuery, {
+  options: {
+    variables: {
+      slug
+    }
+  }
 });
-
-export default function ArticleListProvider({ children }) {
-  return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
-  );
-}
