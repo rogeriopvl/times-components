@@ -35,7 +35,7 @@ const client = new ApolloClient({
   fragmentMatcher
 });
 
-const Author = articleListProvider({ slug: "fiona-hamilton" })(AuthorProfile);
+const Author = articleListProvider({ slug: "camilla-long" })(AuthorProfile);
 
 storiesOf("AuthorProfile", module).add("AuthorProfile", () =>
   <ApolloProvider client={client}>

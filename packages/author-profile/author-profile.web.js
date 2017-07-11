@@ -2,17 +2,14 @@ import React from "react";
 import Markup from "@times-components/markup";
 import Card from "@times-components/card";
 
-const makeCard = ({
-  label,
-  title,
-  publishedTime,
-  publicationName,
-  teaser,
-  leadAsset
-}, i) => {
+const makeCard = (
+  { label, title, publishedTime, publicationName, teaser, leadAsset },
+  i
+) => {
   const uri = leadAsset.posterImage
     ? leadAsset.posterImage.crop.url
     : leadAsset.crop.url;
+
   const props = {
     key: `article-${i}`,
     label,
@@ -21,7 +18,10 @@ const makeCard = ({
     publication: publicationName,
     text: teaser,
     image: {
-      uri
+      uri: uri.replace(
+        /\/\/www.thetimes.co.uk\/imageserver\/image/,
+        "http://nu-cps-imgsrv-tnl-dev-webapp.elb.tnl-dev.ntch.co.uk/imageserver/image"
+      )
     }
   };
 
