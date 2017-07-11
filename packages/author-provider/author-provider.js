@@ -2,7 +2,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 const articleQuery = gql`
-    query ArticleQuery($slug: Slug!) {
+    query ArticleQuery($slug: Slug!, $first: Int, $skip: Int, $imageRatio: Ratio!) {
         author(slug: $slug) {
             name
             jobTitle
@@ -11,7 +11,7 @@ const articleQuery = gql`
             twitter
             articles {
                 count
-                list(first: 10) {
+                list(first: $first, skip: $skip) {
                     id
                     title
                     label
@@ -20,14 +20,14 @@ const articleQuery = gql`
                     leadAsset {
                         ... on Image {
                             title
-                            crop(ratio: "3:2") {
+                            crop(ratio: $imageRatio) {
                                 url
                             }
                         }
                         ... on Video {
                             posterImage {
                                 title
-                                crop(ratio: "3:2") {
+                                crop(ratio: $imageRatio) {
                                     url
                                 }
                             }
@@ -40,10 +40,14 @@ const articleQuery = gql`
     }
 `;
 
-export default ({ slug }) => graphql(articleQuery, {
-  options: {
-    variables: {
-      slug
+export default ({ slug, pageSize, pageNumber, imageRatio }) =>
+  graphql(articleQuery, {
+    options: {
+      variables: {
+        slug,
+        first: pageSize,
+        skip: pageSize * (pageNumber - 1),
+        imageRatio
+      }
     }
-  }
-});
+  });

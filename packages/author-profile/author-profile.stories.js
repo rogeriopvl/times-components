@@ -35,13 +35,15 @@ const client = new ApolloClient({
   fragmentMatcher
 });
 
-const Author = articleListProvider({ slug: "camilla-long" })(AuthorProfile);
+const Author = articleListProvider({
+  slug: "camilla-long",
+  pageSize: 10,
+  pageNumber: 1,
+  imageRatio: "3:2"
+})(AuthorProfile);
 
 storiesOf("AuthorProfile", module).add("AuthorProfile", () =>
   <ApolloProvider client={client}>
-    <Author
-      currentPageOffset={0}
-      pageSize={10}
-    />
+    <Author />
   </ApolloProvider>
 );
