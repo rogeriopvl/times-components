@@ -1,7 +1,7 @@
 {
-  "name": "@times-components/article-list-provider",
+  "name": "@times-components/author-provider",
   "version": "0.0.1",
-  "main": "article-list-provider.js",
+  "main": "author-provider.js",
   "scripts": {
     "flow": "node_modules/flow-bin/cli.js",
     "test:watch": "jest --bail --verbose --watchAll",
@@ -14,7 +14,7 @@
       "node_modules/(?!@times-components)/"
     ],
     "testMatch": [
-      "<rootDir>/packages/article-list-provider/**.test.js"
+      "<rootDir>/packages/author-provider/**.test.js"
     ]
   },
   "repository": {
@@ -26,7 +26,7 @@
     "react",
     "native",
     "web",
-    "article-list-provider",
+    "author-provider",
     "component"
   ],
   "license": "BSD-3-Clause",

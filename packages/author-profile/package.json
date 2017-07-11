@@ -53,7 +53,7 @@
     "webpack": "2.6.1"
   },
   "dependencies": {
-    "@times-components/article-list-provider": "0.0.1",
+    "@times-components/author-provider": "0.0.1",
     "@times-components/card": "0.0.1",
     "@times-components/markup": "0.0.1",
     "jest-cli": "20.0.4",

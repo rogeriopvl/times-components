@@ -3,7 +3,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react-native";
 import ApolloClient, { createNetworkInterface } from "apollo-client";
 import { ApolloProvider, IntrospectionFragmentMatcher } from "react-apollo";
-import articleListProvider from "@times-components/article-list-provider";
+import articleListProvider from "@times-components/author-provider";
 import AuthorProfile from "./author-profile";
 import example from "./example.json";
 
