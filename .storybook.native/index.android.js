@@ -10,7 +10,7 @@ const { hostname } = url.parse(NativeModules.SourceCode.scriptURL);
 
 const StorybookUI = getStorybookUI({
   port: 7007,
-  host: hostname
+  host: process.env.HOST || hostname
 });
 
 AppRegistry.registerComponent("storybooknative", () => StorybookUI);

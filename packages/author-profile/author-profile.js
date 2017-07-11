@@ -16,6 +16,7 @@ const Footer = () => <Text>FOOTER PAGE CONTROL</Text>;
 
 export default function AuthorProfile({ data }) {
   if (data.error) {
+    console.error(data.error);
     return <Text>{data.error.message}</Text>;
   }
 
