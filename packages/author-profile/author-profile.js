@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, Dimensions } from "react-native";
 import Card from "@times-components/card";
 import Markup from "@times-components/markup";
 
@@ -60,6 +60,7 @@ export default function AuthorProfile({ data }) {
           : leadAsset.crop.url;
 
         const props = {
+          width: Dimensions.get("window").width,
           label,
           headline: title,
           date: publishedTime,
