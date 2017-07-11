@@ -21,9 +21,8 @@ Following these guidelines helps to get issues organised and PRs merged faster!
 
 * In general we use [yarn](https://yarnpkg.com/en/), add a yarn.lock file and keep it up to date
  for faster builds
-* We use [flow](https://flow.org/) and [Prettier](https://github.com/prettier/prettier) to ensure
- code consistency and reliability, this pattern should also be followed to avoid typical dev
-  bike-shedding
+* We use [Prettier](https://github.com/prettier/prettier) to ensure style consistency and the
+ [airbnb eslint config](https://github.com/airbnb/javascript) for code quality
 * For testing we’re using [Jest](https://facebook.github.io/jest/) for unit and integration tests.
  React Native integration tests will use [Detox](https://github.com/wix/detox)
 
@@ -43,14 +42,14 @@ When developing a component it's easiest to use the
  [React Native instructions](https://facebook.github.io/react-native/docs/getting-started.html) to
  get up and running first
 
-* `npm run storybook` will build the storybook and allow you to develop components in the browser
-* `npm run storybook-native` will build the storybook and watch for JS changes. In a separate
- terminal run `react-native run-[platform]`. This will allow you to develop in your storybook on a
+* `yarn storybook` will build the storybook and allow you to develop components in the browser
+* `yarn storybook-native` will build the storybook and watch for JS changes. In a separate
+ terminal run `yarn [platform]`. This will allow you to develop in your storybook on a
  device or in an emulator.
 
 > #### Caution
 >
-> There are some problems regarding the usage of native storybooks with the Android simulator, mainly with hot module reloading (HMR).
+> There are some problems regarding the usage of native storybooks with the Android emulator, mainly with hot module reloading (HMR).
 > To take full advantage of HMR while developing components while testing with storybooks use the iOS simulator instead.
 
 `npm run storybook:build` will output the built web storybook into the default `storybook-static`
@@ -77,20 +76,25 @@ Please **ask first** if somebody else is already working on this or the core dev
 
 ## Testing
 
-Every component should have a `XXXX.test.js` file with the component's Jest tests. 
-
-It should also have a `XXXX.fructose.js` file with the component's Fructose tests.
-
-If required there
+Every component should have a `XXXX.test.js` file with the component's Jest tests. If required there
  should be additional functional tests written in [nightmare](http://www.nightmarejs.org/) and/or
- [fructose](https://github.com/rjanjua/fructose).
+ Detox. Currently there's no coverage gate but a coverage report will be generated.
+ 
+### On the phone with a local GraphQL server
 
-Fructose uses detox to instrument the tests. In order to run the tests you will need to install some additional dependencies. Follow steps 1-3 in these [detox docs](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md).
+#### Android
 
-Fructose also relies on an application existing within the project, in this case we are using the storybook app. If you have not installed it, you can do so by running `npm run ios`. You will need to terminate the server that is run with this as fructose will run its own at the time of testing. As long as you do not delete the app, you will only have to build the app once.
+In theory you just need the `USB debugging` setting turned on in `Developer options` to get the
+ storybook to load with `yarn storybook-native`. If you have any localhost type errors you may need
+ to run `HOST=[your machine ip] yarn storybook-native`. If you want your story to use your local
+ GraphQL server (which is running on `port 4000` for example) you'll need to open it up with the
+ [adb CLI](https://developer.android.com/studio/command-line/adb.html)
+ 
+```ssh
+adb reverse tcp:4000 tcp:4000
+```
 
-If you run `npm run fructose-tests` in the root directory it will run fructose tests for all of the components.
-
+You should now be able to access both the storybook and your local server from the connected device
 
 ## Folder Structure
 
@@ -101,7 +105,7 @@ An example component/package looks like this:
 └── card
     ├── CHANGELOG.md
     ├── __snapshots__
-    │   └── card.test.js.snap
+    │   └── card.test.js.snap
     ├── card.js
     ├── card.stories.js
     ├── card.test.js
@@ -135,3 +139,4 @@ Each component should be bumped and published correctly when it is merged to mas
 
 *This was heavily sourced from
  [CRA](https://github.com/facebookincubator/create-react-app/edit/master/CONTRIBUTING.md)*
+ 
