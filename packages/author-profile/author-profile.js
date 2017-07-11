@@ -14,20 +14,27 @@ const Header = ({ name, jobTitle, biography, image, twitter }) =>
 
 const Footer = () => <Text>FOOTER PAGE CONTROL</Text>;
 
-export default function AuthorProfile({
-  name,
-  jobTitle,
-  biography,
-  image,
-  twitter,
-  articleCount,
-  currentPageOfArticles,
-  currentPageOffset,
-  pageSize
-}) {
+export default function AuthorProfile({ data }) {
+  if (data.error) {
+    return <Text>{data.error.message}</Text>;
+  }
+
+  if (data.loading) {
+    return <Text>Loading ...</Text>;
+  }
+
+  const {
+    name,
+    jobTitle,
+    image,
+    twitter,
+    biography,
+    articles: { list }
+  } = data.author;
+
   return (
     <FlatList
-      data={currentPageOfArticles}
+      data={list}
       keyExtractor={article => article.id}
       ListHeaderComponent={() =>
         <Header
@@ -38,17 +45,31 @@ export default function AuthorProfile({
           twitter={twitter}
         />}
       renderItem={({ item }) => {
-        const { title, label, publicationName, publishedTime, teaser } = item;
-        return (
-          <Card
-            headline={title}
-            label={label || "null"}
-            publication={publicationName}
-            date={publishedTime}
-            image={{ uri: "https://facebook.github.io/react/img/logo_og.png" }}
-            text={JSON.parse(teaser)}
-          />
-        );
+        const {
+          label,
+          title,
+          publishedTime,
+          publicationName,
+          teaser,
+          leadAsset
+        } = item;
+
+        const uri = leadAsset.posterImage
+          ? leadAsset.posterImage.crop.url
+          : leadAsset.crop.url;
+
+        const props = {
+          label,
+          headline: title,
+          date: publishedTime,
+          publication: publicationName,
+          text: teaser,
+          image: {
+            uri: "https://placekitten.com/420/200"
+          }
+        };
+
+        return <Card {...props} />;
       }}
       ListFooterComponent={() => <Footer />}
     />

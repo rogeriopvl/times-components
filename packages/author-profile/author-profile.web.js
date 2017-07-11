@@ -29,6 +29,10 @@ const makeCard = (
 };
 
 export default ({ data }) => {
+  if (data.error) {
+    return <div>{data.error.message}</div>;
+  }
+
   if (data.loading) {
     return <div>Loading . . .</div>;
   }

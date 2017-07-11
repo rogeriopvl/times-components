@@ -40,13 +40,6 @@ const Author = articleListProvider({ slug: "camilla-long" })(AuthorProfile);
 storiesOf("AuthorProfile", module).add("AuthorProfile", () =>
   <ApolloProvider client={client}>
     <Author
-      name={example.name}
-      jobTitle={example.jobTitle}
-      biography={JSON.parse(example.biography)}
-      image={example.image}
-      twitter={example.twitter}
-      articleCount={example.articles.count}
-      currentPageOfArticles={example.articles.list}
       currentPageOffset={0}
       pageSize={10}
     />

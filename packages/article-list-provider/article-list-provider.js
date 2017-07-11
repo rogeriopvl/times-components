@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 const articleQuery = gql`
     query ArticleQuery($slug: Slug!) {
         author(slug: $slug) {
+            name
             jobTitle
             biography
             image
@@ -11,6 +12,7 @@ const articleQuery = gql`
             articles {
                 count
                 list(first: 10) {
+                    id
                     title
                     label
                     publicationName
