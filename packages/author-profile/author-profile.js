@@ -26,14 +26,14 @@ export default function AuthorProfile({ data }) {
 
   return (
     <FlatList
-      data={data.articles}
+      data={data.author.articles}
       keyExtractor={article => article.id}
       ListHeaderComponent={() =>
         <Header
-          name={data.name}
-          jobTitle={data.jobTitle}
-          biography={data.biography}
-          twitter={data.twitter}
+          name={data.author.name}
+          jobTitle={data.author.jobTitle}
+          biography={data.author.biography}
+          twitter={data.author.twitter}
         />}
       renderItem={({ item }) =>
         <Card
