@@ -19,6 +19,23 @@ const Header = ({
 
 const Footer = () => <Text>FOOTER PAGE CONTROL</Text>
 
+function renderArticleSummary({ item }) {
+  const props = {
+    date: item.publishedTime,
+    label: item.label || "",
+    publication: item.publicationName,
+    source: {
+      uri: item.url
+    },
+    text: item.teaser,
+    title: item.title
+  }
+
+  return (
+    <Card {...props} />
+  )
+}
+
 export default function AuthorProfile({
   name,
   jobTitle,
@@ -28,7 +45,8 @@ export default function AuthorProfile({
   articleCount,
   currentPageOfArticles,
   currentPageOffset,
-  pageSize}) {
+  pageSize
+}) {
   return (
     <FlatList
     data={currentPageOfArticles}
@@ -42,17 +60,7 @@ export default function AuthorProfile({
         twitter={twitter}
         />
     }
-    renderItem={({ item }) => {
-      const {title, label, publicationName, publishedTime, teaser} = item;
-      return <Card
-        headline={title}
-        label={label || "null"}
-        publication={publicationName}
-        date={publishedTime}
-        image={{uri: "https://facebook.github.io/react/img/logo_og.png" }}
-        text={teaser}
-        />
-    }}
+    renderItem={renderArticleSummary}
     ListFooterComponent={() => <Footer/>}
   />
   );

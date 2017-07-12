@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@times-components/card": "0.0.1",
+    "@times-components/article-summary": "0.0.1",
     "jest-cli": "20.0.4",
     "lodash.merge": "4.6.0",
     "prop-types": "15.5.10",
@@ -59,5 +60,9 @@
     "react-dom": "15.5.4",
     "react-native-web": "0.0.97",
     "react-style-proptype": "3.0.0"
+  },
+  "peerDependencies": {
+    "@storybook/react-native": "3.0.0",
+    "react-native": "0.44.1"
   }
 }
