@@ -4,7 +4,7 @@
   "description": "A collection of presentational components for locate a location",
   "main": "index.js",
   "engines": {
-    "node" : ">=8.0.0"
+    "node": ">=8.0.0"
   },
   "bin": {
     "times-components": "times-components"
@@ -69,7 +69,7 @@
   },
   "fructose": {
     "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/storybooknative.app"
-	},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/newsuk/times-components.git"
