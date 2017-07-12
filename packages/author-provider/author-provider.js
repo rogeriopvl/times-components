@@ -1,3 +1,4 @@
+import React from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -40,8 +41,10 @@ const articleQuery = gql`
     }
 `;
 
-export default ({ slug, pageSize, pageNumber, imageRatio }) =>
-  graphql(articleQuery, {
+export default ({ children, slug, pageSize, pageNumber, imageRatio }) => {
+  const Child = React.Children.only(children);
+
+  const Component = graphql(articleQuery, {
     options: {
       variables: {
         slug,
@@ -50,4 +53,7 @@ export default ({ slug, pageSize, pageNumber, imageRatio }) =>
         imageRatio
       }
     }
-  });
+  })(Child.type);
+
+  return <Component />;
+};

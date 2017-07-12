@@ -3,9 +3,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react-native";
 import ApolloClient, { createNetworkInterface } from "apollo-client";
 import { ApolloProvider, IntrospectionFragmentMatcher } from "react-apollo";
-import articleListProvider from "@times-components/author-provider";
+import ArticleListProvider from "@times-components/author-provider";
 import AuthorProfile from "./author-profile";
-import example from "./example.json";
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: {
@@ -35,15 +34,15 @@ const client = new ApolloClient({
   fragmentMatcher
 });
 
-const Author = articleListProvider({
-  slug: "camilla-long",
-  pageSize: 10,
-  pageNumber: 1,
-  imageRatio: "3:2"
-})(AuthorProfile);
-
 storiesOf("AuthorProfile", module).add("AuthorProfile", () =>
   <ApolloProvider client={client}>
-    <Author />
+    <ArticleListProvider
+      slug="camilla-long"
+      pageSize={10}
+      pageNumber={1}
+      imageRatio="3:2"
+    >
+      <AuthorProfile />
+    </ArticleListProvider>
   </ApolloProvider>
 );
