@@ -3,7 +3,7 @@ import { FlatList, View, Text, Dimensions } from "react-native";
 import Card from "@times-components/card";
 import Markup from "@times-components/markup";
 
-const Header = ({ name, jobTitle, biography, image, twitter }) =>
+const Header = ({ name, jobTitle, biography, twitter }) =>
   <View>
     <Text>{name}</Text>
     <Text>{jobTitle}</Text>
@@ -24,55 +24,23 @@ export default function AuthorProfile({ data }) {
     return <Text>Loading ...</Text>;
   }
 
-  const {
-    name,
-    jobTitle,
-    image,
-    twitter,
-    biography,
-    articles: { list }
-  } = data.author;
-
   return (
     <FlatList
-      data={list}
+      data={data.articles}
       keyExtractor={article => article.id}
       ListHeaderComponent={() =>
         <Header
-          name={name}
-          jobTitle={jobTitle}
-          biography={biography}
-          image={image}
-          twitter={twitter}
+          name={data.name}
+          jobTitle={data.jobTitle}
+          biography={data.biography}
+          twitter={data.twitter}
         />}
-      renderItem={({ item }) => {
-        const {
-          label,
-          title,
-          publishedTime,
-          publicationName,
-          teaser,
-          leadAsset
-        } = item;
-
-        const uri = leadAsset.posterImage
-          ? leadAsset.posterImage.crop.url
-          : leadAsset.crop.url;
-
-        const props = {
-          width: Dimensions.get("window").width,
-          label,
-          headline: title,
-          date: publishedTime,
-          publication: publicationName,
-          text: teaser,
-          image: {
-            uri: "https://placekitten.com/420/200"
-          }
-        };
-
-        return <Card {...props} />;
-      }}
+      renderItem={({ item }) =>
+        <Card
+          {...item}
+          width={Dimensions.get("window").width}
+          image={{ uri: item.uri }}
+        />}
       ListFooterComponent={() => <Footer />}
     />
   );

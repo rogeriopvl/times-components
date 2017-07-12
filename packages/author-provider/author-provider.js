@@ -41,10 +41,54 @@ const articleQuery = gql`
     }
 `;
 
-export default ({ children, slug, pageSize, pageNumber, imageRatio }) => {
+const makeArticle = ({
+  id,
+  label,
+  leadAsset,
+  publicationName,
+  publishedTime,
+  teaser,
+  title
+}) => {
+  const uri = leadAsset.posterImage
+    ? leadAsset.posterImage.crop.url
+    : leadAsset.crop.url;
+
+  return {
+    id,
+    label,
+    publication: publicationName,
+    date: new Date(publishedTime),
+    text: teaser,
+    headline: title,
+    uri: uri.replace(
+      /\/\/www.thetimes.co.uk\/imageserver\/image/,
+      "http://nu-cps-imgsrv-tnl-dev-webapp.elb.tnl-dev.ntch.co.uk/imageserver/image"
+    )
+  };
+};
+
+const Wrapper = ({ children, data }) => {
   const Child = React.Children.only(children);
 
-  const Component = graphql(articleQuery, {
+  const author = {};
+
+  if (data.author) {
+    Object.assign(author, {
+      articles: data.author.articles.list.map(makeArticle),
+      biography: data.author.biography,
+      image: data.author.image,
+      jobTitle: data.author.jobTitle,
+      name: data.author.name,
+      twitter: data.author.twitter
+    });
+  }
+
+  return React.createElement(Child.type, { data: { ...data, author } }, []);
+};
+
+export default ({ children, slug, pageSize, pageNumber, imageRatio }) => {
+  const WrapperWithData = graphql(articleQuery, {
     options: {
       variables: {
         slug,
@@ -53,7 +97,11 @@ export default ({ children, slug, pageSize, pageNumber, imageRatio }) => {
         imageRatio
       }
     }
-  })(Child.type);
+  })(Wrapper);
 
-  return <Component />;
+  return (
+    <WrapperWithData>
+      {children}
+    </WrapperWithData>
+  );
 };
