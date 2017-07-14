@@ -40,6 +40,7 @@ class CardComponent extends React.Component {
   render() {
     const { label, headline, text, date, publication, image } = this.props;
     const styles = getStyles(this.state.isHorizontal);
+
     return (
       <View onLayout={this.handleLayout} style={styles.container}>
         <View style={styles.imageContainer}>
