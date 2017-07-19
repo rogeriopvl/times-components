@@ -1,4 +1,5 @@
 import React from "react";
+import AuthorHead from "@times-components/author-head";
 import Markup from "@times-components/markup";
 import Card from "@times-components/card";
 import { Dimensions } from "react-native";
@@ -20,10 +21,17 @@ export default ({ data }) => {
     return <div>Loading . . .</div>;
   }
 
-  const { biography, articles } = data.author;
+  const { name, jobTitle, image, biography, twitter, articles } = data.author;
 
   return (
     <div>
+      <AuthorHead
+        name={name}
+        title={jobTitle}
+        uri={image}
+        bio={biography}
+        twitter={twitter}
+      />
       <Markup ast={biography} />
       {articles.map(makeCard)}
     </div>

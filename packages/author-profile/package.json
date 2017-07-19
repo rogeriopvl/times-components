@@ -53,6 +53,7 @@
     "webpack": "2.6.1"
   },
   "dependencies": {
+    "@times-components/author-head": "0.0.1",
     "@times-components/author-provider": "0.0.1",
     "@times-components/card": "0.0.1",
     "@times-components/markup": "0.0.1",
