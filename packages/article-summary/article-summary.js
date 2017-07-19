@@ -70,7 +70,7 @@ ArticleSummary.propTypes = {
   label: PropTypes.string,
   headline: PropTypes.string,
   text: Markup.propTypes.ast,
-  date: PropTypes.string,
+  date: PropTypes.instanceOf(Date),
   publication: PropTypes.string
 };
 
