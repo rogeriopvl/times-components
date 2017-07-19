@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text, Dimensions } from "react-native";
+import { FlatList, Text, Dimensions } from "react-native";
 import Card from "@times-components/card";
 import AuthorHead from "@times-components/author-head";
 
