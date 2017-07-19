@@ -1,16 +1,7 @@
 import React from "react";
 import { FlatList, View, Text, Dimensions } from "react-native";
 import Card from "@times-components/card";
-import Markup from "@times-components/markup";
-
-const Header = ({ name, jobTitle, biography, twitter }) =>
-  <View>
-    <Text>{name}</Text>
-    <Text>{jobTitle}</Text>
-    <Markup ast={biography} wrapIn="p" />
-    <Text>{twitter}</Text>
-    <Text>HEADER PAGE CONTROL</Text>
-  </View>;
+import AuthorHead from "@times-components/author-head";
 
 const Footer = () => <Text>FOOTER PAGE CONTROL</Text>;
 
@@ -29,10 +20,11 @@ export default function AuthorProfile({ data }) {
       data={data.author.articles}
       keyExtractor={article => article.id}
       ListHeaderComponent={() =>
-        <Header
+        <AuthorHead
           name={data.author.name}
-          jobTitle={data.author.jobTitle}
-          biography={data.author.biography}
+          title={data.author.jobTitle}
+          uri={data.author.image}
+          bio={data.author.biography}
           twitter={data.author.twitter}
         />}
       renderItem={({ item }) =>
