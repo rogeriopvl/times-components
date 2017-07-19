@@ -3,7 +3,13 @@ import Markup from "@times-components/markup";
 import Card from "@times-components/card";
 import { Dimensions } from "react-native";
 
-const makeCard = (props, i) => <Card {...props} key={i} width={Dimensions.get("window").width} />;
+const makeCard = (props, i) =>
+  <Card
+    {...props}
+    key={i}
+    width={Dimensions.get("window").width}
+    image={{ uri: props.uri }}
+  />;
 
 export default ({ data }) => {
   if (data.error) {
