@@ -20,6 +20,8 @@ class AdComposer extends Component {
       gptManager,
       pbjsManager
     });
+
+    performance.mark('AD_READY_START');
   }
 
   componentDidMount() {

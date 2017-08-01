@@ -1,3 +1,5 @@
+import TimeManager from "../article/time-manager";
+
 const removeItemFromQueue = (queue, itemId) => {
   const obj = Object.assign([], queue);
   const objIds = obj.map(item => item.id);
@@ -45,6 +47,8 @@ class AdManager {
 
   display() {
     return new Promise(resolve => {
+      performance.mark('AD_READY_END');
+      TimeManager.saveToFile();
       this.gptManager.googletag.cmd.push(() => {
         this.pbjsManager.pbjs.que.push(() => {
           this.pbjsManager.pbjs.setTargetingForGPTAsync();

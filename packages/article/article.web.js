@@ -1,18 +1,18 @@
 import React from "react";
 import { View } from "react-native";
-// import { AdComposer } from "@times-components/ad";
+import { AdComposer } from "@times-components/ad";
 import ArticleContent from "./article-content";
+
+// const Article = () =>
+//   <View>
+//     <ArticleContent code="intervention" />
+//   </View>;
 
 const Article = () =>
   <View>
-    <ArticleContent code="intervention" />
+    <AdComposer section="article" networkId="25436805">
+      <ArticleContent code="ad-header" />
+    </AdComposer>
   </View>;
-  
-// const Article = () =>
-//   <View>
-//     <AdComposer section="article" networkId="25436805">
-//       <ArticleContent code="ad-header" />
-//     </AdComposer>
-//   </View>;
 
 export default Article;
