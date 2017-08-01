@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 const Manager = function () {
   var time = [];
 
@@ -19,12 +17,18 @@ const Manager = function () {
     saveToFile: () => {
 
       const marks = performance.getEntriesByType("mark");
-      const timeDiff = marks[1].startTime - marks[0].startTime;
-      console.log("timeDiff", timeDiff);
-
-      const data = `${marks[0].startTime}\t${marks[1].startTime}\t${timeDiff}`;
+      const times = marks.map((item) => item.startTime);
+      const max = Math.max.apply(null, times);
+      const min = Math.min.apply(null, times);
+      const data = `${min}\t${max}\t${max-min}`;
 
       console.log(data);
+      // const timeDiff = marks[1].startTime - marks[0].startTime;
+      // console.log("timeDiff", timeDiff);
+      //
+      // const data = `${marks[0].startTime}\t${marks[1].startTime}\t${timeDiff}`;
+
+      // console.log(data);
     }
   }
 }

@@ -37,18 +37,24 @@ class AdCopy extends Component {
     this.handleNavigationChange = this.handleNavigationChange.bind(this);
     this.setAdReady = this.setAdReady.bind(this);
 
-    performance.mark('AD_READY_START');
+    performance.mark('AD_READY_START' + props.code);
     this.state = {
       adReady: false,
       initDate: new Date()
     };
 
+    let count = 0;
+    let adsNumber = 4;
+
     window.onmessage = function(e){
       if (e.data == 'AD_READY') {
         // window.alert('READY!');
-        performance.mark('AD_READY_END');
-        TimeManager.saveToFile();
-        console.log('Ready');
+        performance.mark('AD_READY_END' + props.code);
+        count++;
+        if (count === adsNumber) {
+          TimeManager.saveToFile();
+        }
+        console.log('Ready', count);
         // TimeManager.addTime(this.state.initDate, new Date());
         this.setAdReady();
       }
@@ -158,7 +164,8 @@ class AdCopy extends Component {
         </body>
       </html>
       `;
-    document.querySelector('iframe').contentDocument.write(html);
+    // document.querySelector('iframe').contentDocument.write(html);
+    document.getElementById('iframe-' + this.props.code).contentDocument.write(html);
   }
 
   setAdReady() {
@@ -196,6 +203,7 @@ class AdCopy extends Component {
           }}
         />
         <iframe
+          id={"iframe-" + this.props.code}
           width={this.config.maxSizes.width}
           height={this.config.maxSizes.height} />
       </View>

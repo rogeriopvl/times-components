@@ -9,7 +9,10 @@ const ArticleContent = ({ code }) =>
   <ScrollView>
     <Text>Default Article.</Text>
     <NewArticleFlag />
-    <AdCopy code={code} section="article" />
+    <AdCopy code="ad-header" section="article" />
+    <AdCopy code="intervention" section="article" />
+    <AdCopy code="header" section="article" />
+    <AdCopy code="ad-pixel" section="article" />
   </ScrollView>;
 
 ArticleContent.propTypes = {
