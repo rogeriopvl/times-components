@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 const Manager = function () {
   var time = [];
 
@@ -13,6 +15,16 @@ const Manager = function () {
     },
     getTimes: () => {
       return time;
+    },
+    saveToFile: () => {
+
+      const marks = performance.getEntriesByType("mark");
+      const timeDiff = marks[1].startTime - marks[0].startTime;
+      console.log("timeDiff", timeDiff);
+
+      const data = `${marks[0].startTime}\t${marks[1].startTime}\t${timeDiff}`;
+
+      console.log(data);
     }
   }
 }

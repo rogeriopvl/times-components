@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, WebView, Dimensions, Linking, StyleSheet } from "react-native";
+import { Text, View, WebView, Dimensions, Linking, StyleSheet } from "react-native";
 import { getSlotConfig } from "../ad/generate-config";
 import { pbjs as pbjsConfig } from "../ad/config";
 
@@ -37,36 +37,25 @@ class AdCopy extends Component {
     this.handleNavigationChange = this.handleNavigationChange.bind(this);
     this.setAdReady = this.setAdReady.bind(this);
 
+    performance.mark('AD_READY_START');
     this.state = {
       adReady: false,
       initDate: new Date()
     };
+
+    window.onmessage = function(e){
+      if (e.data == 'AD_READY') {
+        // window.alert('READY!');
+        performance.mark('AD_READY_END');
+        TimeManager.saveToFile();
+        console.log('Ready');
+        // TimeManager.addTime(this.state.initDate, new Date());
+        this.setAdReady();
+      }
+    };
   }
 
-  setAdReady() {
-    this.setState({
-      adReady: true
-    });
-  }
-
-  handleOriginChange(url) {
-    if (AdCopy.hasDifferentOrigin(url, this.props.baseUrl)) {
-      this.webview.stopLoading();
-      AdCopy.onOriginChange(url);
-    }
-  }
-
-  handleNavigationChange(navState) {
-    // NOTE: we're using title here to send messages between the webview and the Ad component
-    if (AdCopy.hasAdReady(navState.title)) {
-      TimeManager.addTime(this.state.initDate, new Date());
-      this.setAdReady();
-    }
-
-    this.handleOriginChange(navState.url);
-  }
-
-  render() {
+  componentDidMount() {
     const html = `
       <html>
         <head>
@@ -103,6 +92,8 @@ class AdCopy extends Component {
             function notifyAdReady() {
               document.title = 'AD_READY';
               window.location.hash = ++i;
+
+              window.top.postMessage('AD_READY', '*');
             }
 
             function initPrebidDefaults() {
@@ -167,6 +158,33 @@ class AdCopy extends Component {
         </body>
       </html>
       `;
+    document.querySelector('iframe').contentDocument.write(html);
+  }
+
+  setAdReady() {
+    this.setState({
+      adReady: true
+    });
+  }
+
+  handleOriginChange(url) {
+    if (AdCopy.hasDifferentOrigin(url, this.props.baseUrl)) {
+      this.webview.stopLoading();
+      AdCopy.onOriginChange(url);
+    }
+  }
+
+  handleNavigationChange(navState) {
+    // NOTE: we're using title here to send messages between the webview and the Ad component
+    if (AdCopy.hasAdReady(navState.title)) {
+      // TimeManager.addTime(this.state.initDate, new Date());
+      this.setAdReady();
+    }
+
+    this.handleOriginChange(navState.url);
+  }
+
+  render() {
 
     return (
       <View style={this.props.style}>
@@ -177,18 +195,9 @@ class AdCopy extends Component {
             display: this.state.adReady ? "none" : "flex"
           }}
         />
-        <WebView
-          ref={ref => {
-            this.webview = ref;
-          }}
-          source={{ html, baseUrl: this.props.baseUrl }}
-          style={{
-            height: this.config.maxSizes.height + this.viewBorder,
-            display: this.state.adReady ? "flex" : "none"
-          }}
-          baseUrl={this.props.baseUrl}
-          onNavigationStateChange={this.handleNavigationChange}
-        />
+        <iframe
+          width={this.config.maxSizes.width}
+          height={this.config.maxSizes.height} />
       </View>
     );
   }
