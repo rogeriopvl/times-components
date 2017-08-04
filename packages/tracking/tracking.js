@@ -5,6 +5,16 @@ import PropTypes from "prop-types";
 const getDisplayName = WrappedComponent =>
   WrappedComponent.displayName || WrappedComponent.name || "Component";
 
+export const trackingContextTypes = {
+  tracking: PropTypes.shape({
+    perf: PropTypes.func,
+    monitoring: PropTypes.func,
+    analytics: PropTypes.func,
+    addTrackingContext: PropTypes.func,
+    addTracking: PropTypes.func
+  })
+};
+
 export const addTracking = WrappedComponent => {
   class WithTracking extends Component {
     componentDidMount() {
@@ -14,7 +24,7 @@ export const addTracking = WrappedComponent => {
 
       this.context.tracking.analytics({
         object: getDisplayName(WrappedComponent),
-        action: "viewed"
+        action: "Viewed"
       });
     }
 
@@ -29,13 +39,7 @@ export const addTracking = WrappedComponent => {
 
   hoistNonReactStatic(WithTracking, WrappedComponent);
 
-  WithTracking.contextTypes = {
-    tracking: PropTypes.shape({
-      perf: PropTypes.func,
-      monitoring: PropTypes.func,
-      analytics: PropTypes.func
-    })
-  };
+  WithTracking.contextTypes = trackingContextTypes;
 
   return WithTracking;
 };
@@ -53,7 +57,9 @@ export const addTrackingContext = WrappedComponent => {
           },
           analytics(...args) {
             console.log("doing something with analytics", ...args);
-          }
+          },
+          addTracking,
+          addTrackingContext
         }
       };
     }
@@ -69,13 +75,7 @@ export const addTrackingContext = WrappedComponent => {
 
   hoistNonReactStatic(WithTrackingContext, WrappedComponent);
 
-  WithTrackingContext.childContextTypes = {
-    tracking: PropTypes.shape({
-      perf: PropTypes.func,
-      monitoring: PropTypes.func,
-      analytics: PropTypes.func
-    })
-  };
+  WithTrackingContext.childContextTypes = trackingContextTypes;
 
   return WithTrackingContext;
 };
