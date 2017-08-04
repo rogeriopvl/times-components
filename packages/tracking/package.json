@@ -1,8 +1,8 @@
 {
-  "name": "@times-components/author-profile",
-  "version": "0.4.0",
-  "description": "Author info along with articles they have written",
-  "main": "author-profile.js",
+  "name": "@times-components/tracking",
+  "version": "0.0.1",
+  "description": "HOCs to provide analytics, monitorign and perf metrics",
+  "main": "tracking.js",
   "scripts": {
     "flow": "node_modules/flow-bin/cli.js",
     "test:watch": "jest --bail --verbose --watchAll",
@@ -11,14 +11,11 @@
   "jest": {
     "preset": "react-native",
     "rootDir": "../../",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
     "transformIgnorePatterns": [
       "node_modules/(?!@times-components)/"
     ],
     "testMatch": [
-      "<rootDir>/packages/author-profile/__tests__/**.test.js"
+      "<rootDir>/packages/tracking/**.test.js"
     ]
   },
   "repository": {
@@ -30,7 +27,7 @@
     "react",
     "native",
     "web",
-    "author-profile",
+    "tracking",
     "component"
   ],
   "license": "BSD-3-Clause",
@@ -39,37 +36,27 @@
   },
   "homepage": "https://github.com/newsuk/times-components#readme",
   "devDependencies": {
-    "@times-components/tracking": "0.0.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.5",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react-native": "1.9.2",
-    "enzyme": "2.9.1",
-    "enzyme-to-json": "1.5.1",
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
-    "jsdom": "11.1.0",
-    "react-native": "0.44.1",
-    "react-test-renderer": "16.0.0-alpha.6",
-    "webpack": "3.3.0"
+    "react-test-renderer": "15.5.4",
+    "webpack": "2.6.1"
   },
   "dependencies": {
-    "@times-components/author-head": "0.2.0",
-    "@times-components/card": "0.3.2",
-    "@times-components/pagination": "0.2.0",
-    "jest-cli": "20.0.4",
-    "lodash.merge": "4.6.0",
+    "hoist-non-react-statics": "^2.2.1",
     "prop-types": "15.5.10",
     "react": "16.0.0-alpha.6",
     "react-dom": "15.5.4",
-    "react-native-web": "0.0.97",
-    "react-style-proptype": "3.0.0"
+    "react-native": "0.44.1",
+    "react-native-web": "0.0.97"
   },
   "peerDependencies": {
-    "@storybook/react-native": "3.0.0",
-    "react-native": "0.44.1"
+    "@storybook/react-native": "3.1.6"
   },
   "publishConfig": {
     "access": "public"
