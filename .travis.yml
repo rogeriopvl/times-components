@@ -1,10 +1,20 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.27.5
-  - export PATH="$HOME/.yarn/bin:$PATH"
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.27.5
+- export PATH="$HOME/.yarn/bin:$PATH"
 script:
-  - yarn lint
-  - yarn test
+- yarn lint
+- yarn test
 after_success: yarn coverage:publish
+before_deploy: yarn packages:publish
+deploy:
+  provider: npm
+  email: tnl@news.co.uk
+  api_key:
+    secure: Azn0vklPRCzhSrwLG13YMwZtzNQdbKZmUFgZ2hjBd8kUtRq9h8RIxkDPDRZ9W/ZWgB8uJADemYwOaxnjIfVu24wL8cOhM8tr2htN5DxsRqTeqfm0dEbPaDMTA3O8sJc0NvWVk865tvtPF6pyYKetAFnFFH7Vzb46VqrhKhmG34xm6FGBE6qDdzgoGBDKQiGI69rMr+nMrQUoU4OzWzqWF3juv5mkCJeMBA+2K9sCvLNbNeLgS2r3AUJ8/OdKrkt4OEjNlR9YDntnMRivXXnrn9XEQiGq5uYdJY2pdYXZroJOG943EMnoJdcdYHj4UF77sCOwUL7tN+xT3VY04a+8FksxY+XOxIxfbH20bIypwqx17FxrvjwFx7s4RNHpXtsDYD3den8IEHHcdLOSxQckP+RZ9RpEd57DR0rmCl3HFluR+ua2TtyhtiXylPPKwAfaluNLAgBVCFdG4h5c3noN8pya3ylrqyPXVSuZ06W31asufVlLzaDh+jyd6T6t9smG7Ae+g27T9LaDCDT+9POE/yHwbQ45Q6FKxceKm0pyL/Zy99PsqGq/a0hU9Mgmsu+OY1pG+yvM5Bsd3NYNFf9wUlgA2JxqXImbF+WKCJf04hM2DxOL8idnysowcYFYks3IUWwaNngRZnI0sJZTYQo787ThqjU/2E4hPIcRm2aAJCQ=
+  on:
+    tags: true
+    branch: master
+    repo: newsuk/times-components
