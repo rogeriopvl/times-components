@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { storiesOf } from "@storybook/react-native";
 import AuthorProfile from "./author-profile";
 import example from "./example.json";
+import { addTrackingContext } from "@times-components/tracking";
 
 const styles = StyleSheet.create({
   background: {
@@ -33,7 +34,9 @@ storiesOf("AuthorProfile", module)
       isLoading: false
     };
 
-    return story(<AuthorProfile {...props} />);
+    const AuthorProfileWithTracking = addTrackingContext(AuthorProfile);
+
+    return story(<AuthorProfileWithTracking {...props} />);
   })
   .add("AuthorProfile Loading", () => {
     const props = {

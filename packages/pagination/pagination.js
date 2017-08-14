@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import PropTypes from "prop-types";
+import { addTracking } from "@times-components/tracking";
 
 const styles = StyleSheet.create({
   compact: {
@@ -77,31 +78,33 @@ class Pagination extends React.Component {
     const finalResult = Math.min(count, page * pageSize);
     const message = `Showing ${startResult} - ${finalResult} of ${count} results`;
 
-    const prevComponent = startResult > pageSize
-      ? <TouchableHighlight>
-          <Text
-            accessibilityRole="link"
-            href={prevPageLinking}
-            style={styles.arrows}
-            onPress={() => onPrev(prevPageLinking)}
-          >
-            {"< Previous page"}
-          </Text>
-        </TouchableHighlight>
-      : null;
+    const prevComponent =
+      startResult > pageSize
+        ? <TouchableHighlight>
+            <Text
+              accessibilityRole="link"
+              href={prevPageLinking}
+              style={styles.arrows}
+              onPress={() => onPrev(prevPageLinking)}
+            >
+              {"< Previous page"}
+            </Text>
+          </TouchableHighlight>
+        : null;
 
-    const nextComponent = finalResult < count
-      ? <TouchableHighlight>
-          <Text
-            accessibilityRole="link"
-            href={nextPageLinking}
-            style={styles.arrows}
-            onPress={() => onNext(nextPageLinking)}
-          >
-            {"Next page >"}
-          </Text>
-        </TouchableHighlight>
-      : null;
+    const nextComponent =
+      finalResult < count
+        ? <TouchableHighlight>
+            <Text
+              accessibilityRole="link"
+              href={nextPageLinking}
+              style={styles.arrows}
+              onPress={() => onNext(nextPageLinking)}
+            >
+              {"Next page >"}
+            </Text>
+          </TouchableHighlight>
+        : null;
 
     const messageComponent = !compact
       ? <Text
@@ -115,8 +118,12 @@ class Pagination extends React.Component {
       <View style={styles.container} onLayout={this.handleLayout}>
         {messageComponent}
         <View style={styles.horizontal}>
-          <View>{prevComponent}</View>
-          <View>{nextComponent}</View>
+          <View>
+            {prevComponent}
+          </View>
+          <View>
+            {nextComponent}
+          </View>
         </View>
       </View>
     );
@@ -143,5 +150,10 @@ Pagination.defaultProps = {
   onNext: () => {},
   onPrev: () => {}
 };
+
+export const PaginationWithTracking = addTracking(Pagination, [
+  "onNext",
+  "onPrev"
+]);
 
 export default Pagination;

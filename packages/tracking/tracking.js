@@ -15,8 +15,15 @@ export const trackingContextTypes = {
   })
 };
 
-export const addTracking = WrappedComponent => {
+export const addTracking = (WrappedComponent, funcsToTrack = []) => {
   class WithTracking extends Component {
+    constructor(props) {
+      super(props);
+
+      this.wrappedFuncs = new Map();
+      this.getProps = this.getProps.bind(this);
+    }
+
     componentDidMount() {
       if (!this.context.tracking) {
         return;
@@ -28,8 +35,48 @@ export const addTracking = WrappedComponent => {
       });
     }
 
+    getProps(props) {
+      return (funcsAsProps, funcName) => {
+        const [origFunc, wrappedFunc] = this.wrappedFuncs.get(funcName) || [];
+
+        if (wrappedFunc && props[funcName] === origFunc) {
+          return {
+            ...funcsAsProps,
+            funcName: wrappedFunc
+          };
+        }
+
+        const funcWrapped = (...args) => {
+          if (!this.context.tracking) {
+            return props[funcName](...args);
+          }
+
+          this.context.tracking.analytics({
+            object: getDisplayName(WrappedComponent),
+            action: "Action",
+            props: {
+              actionName: funcName
+            }
+          });
+
+          return props[funcName](...args);
+        };
+        this.wrappedFuncs.set(funcName, [props[funcName], funcWrapped]);
+
+        return {
+          ...funcsAsProps,
+          [funcName]: funcWrapped
+        };
+      };
+    }
+
     render() {
-      return <WrappedComponent {...this.props} />;
+      const passProps = {
+        ...this.props,
+        ...funcsToTrack.reduce(this.getProps(this.props), {})
+      };
+
+      return <WrappedComponent {...passProps} />;
     }
   }
 
@@ -40,6 +87,8 @@ export const addTracking = WrappedComponent => {
   hoistNonReactStatic(WithTracking, WrappedComponent);
 
   WithTracking.contextTypes = trackingContextTypes;
+  WithTracking.propTypes = WrappedComponent.propTypes;
+  WithTracking.defaultProps = WrappedComponent.defaultProps;
 
   return WithTracking;
 };
@@ -76,6 +125,8 @@ export const addTrackingContext = WrappedComponent => {
   hoistNonReactStatic(WithTrackingContext, WrappedComponent);
 
   WithTrackingContext.childContextTypes = trackingContextTypes;
+  WithTrackingContext.propTypes = WrappedComponent.propTypes;
+  WithTrackingContext.defaultProps = WrappedComponent.defaultProps;
 
   return WithTrackingContext;
 };
