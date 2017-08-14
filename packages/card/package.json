@@ -48,6 +48,8 @@
     "enzyme-to-json": "1.5.1",
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
     "react-native": "0.44.1",
     "react-test-renderer": "15.5.4",
     "webpack": "3.3.0"
@@ -55,13 +57,12 @@
   "dependencies": {
     "@times-components/article-summary": "0.2.2",
     "@times-components/image": "1.1.0",
-    "react": "16.0.0-alpha.6",
-    "react-dom": "15.5.4",
-    "react-native": "0.44.1",
     "react-native-web": "0.0.97"
   },
   "peerDependencies": {
     "@storybook/react-native": "3.1.8",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
     "react-native": "0.44.1"
   },
   "publishConfig": {
