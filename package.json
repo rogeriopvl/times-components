@@ -94,8 +94,8 @@
   "homepage": "https://github.com/newsuk/times-components#readme",
   "devDependencies": {
     "@storybook/addon-actions": "3.1.8",
-    "@storybook/react": "3.1.8",
-    "@storybook/react-native": "3.1.8",
+    "@storybook/react": "3.2.4",
+    "@storybook/react-native": "3.2.4",
     "coveralls": "2.13.1",
     "detox": "5.5.1",
     "eslint": "3.19.0",
@@ -116,7 +116,7 @@
     "react-dom": "15.5.4",
     "react-native": "0.44.1",
     "react-native-storybook-loader": "1.4.1",
-    "react-native-web": "0.0.97",
+    "react-native-web": "0.0.119",
     "rimraf": "2.6.1",
     "url": "0.11.0",
     "webpack": "3.3.0"

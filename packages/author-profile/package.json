@@ -63,11 +63,11 @@
     "jest-cli": "20.0.4",
     "lodash.merge": "4.6.0",
     "prop-types": "15.5.10",
-    "react-native-web": "0.0.97",
+    "react-native-web": "0.0.119",
     "react-style-proptype": "3.0.0"
   },
   "peerDependencies": {
-    "@storybook/react-native": "3.0.0",
+    "@storybook/react-native": "3.2.4",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-native": "0.44.1"

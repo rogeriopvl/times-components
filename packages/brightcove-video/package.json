@@ -48,7 +48,7 @@
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-native": "0.44.1",
-    "react-native-web": "0.0.97",
+    "react-native-web": "0.0.119",
     "react-test-renderer": "15.5.4",
     "webpack": "3.3.0"
   },
@@ -57,11 +57,11 @@
   },
   "peerDependencies": {
     "@storybook/addon-actions": "3.0.0",
-    "@storybook/react-native": "3.0.0",
+    "@storybook/react-native": "3.2.4",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-native": "0.44.1",
-    "react-native-web": "0.0.97"
+    "react-native-web": "0.0.119"
   },
   "_timesComponentsCliVariables": {
     "component": "BrightcoveVideo",
