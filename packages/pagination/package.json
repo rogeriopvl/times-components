@@ -38,7 +38,6 @@
   },
   "homepage": "https://github.com/newsuk/times-components#readme",
   "devDependencies": {
-    "@times-components/tracking": "0.0.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
@@ -53,6 +52,7 @@
     "webpack": "3.3.0"
   },
   "dependencies": {
+    "@times-components/tracking": "0.0.1",
     "prop-types": "15.5.10",
     "react": "16.0.0-alpha.6",
     "react-dom": "15.5.4",

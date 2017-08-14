@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, Image, View } from "react-native";
+import { addTracking } from "@times-components/tracking";
 import placeholder from "./placeholder";
 
 const window = Dimensions.get("window");
@@ -85,5 +86,10 @@ class ImageComponent extends React.Component {
 }
 
 ImageComponent.propTypes = Image.propTypes;
+
+export const ImageWithTracking = addTracking(ImageComponent, [
+  "onError",
+  "onLoad"
+]);
 
 export default ImageComponent;

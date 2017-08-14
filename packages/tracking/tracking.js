@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import PropTypes from "prop-types";
 
-const getDisplayName = WrappedComponent =>
-  WrappedComponent.displayName || WrappedComponent.name || "Component";
+const getDisplayName = (WrappedComponent, alternativeName) =>
+  alternativeName ||
+  WrappedComponent.displayName ||
+  WrappedComponent.name ||
+  "Component";
 
 export const trackingContextTypes = {
   tracking: PropTypes.shape({
@@ -15,7 +18,13 @@ export const trackingContextTypes = {
   })
 };
 
-export const addTracking = (WrappedComponent, funcsToTrack = []) => {
+export const addTracking = (
+  WrappedComponent,
+  funcsToTrack = [],
+  alternativeName
+) => {
+  const componentName = getDisplayName(WrappedComponent, alternativeName);
+
   class WithTracking extends Component {
     constructor(props) {
       super(props);
@@ -30,7 +39,7 @@ export const addTracking = (WrappedComponent, funcsToTrack = []) => {
       }
 
       this.context.tracking.analytics({
-        object: getDisplayName(WrappedComponent),
+        object: componentName,
         action: "Viewed"
       });
     }
@@ -52,7 +61,7 @@ export const addTracking = (WrappedComponent, funcsToTrack = []) => {
           }
 
           this.context.tracking.analytics({
-            object: getDisplayName(WrappedComponent),
+            object: componentName,
             action: "Action",
             props: {
               actionName: funcName
@@ -80,9 +89,7 @@ export const addTracking = (WrappedComponent, funcsToTrack = []) => {
     }
   }
 
-  WithTracking.displayName = `WithTracking(${getDisplayName(
-    WrappedComponent
-  )})`;
+  WithTracking.displayName = `WithTracking(${componentName})`;
 
   hoistNonReactStatic(WithTracking, WrappedComponent);
 
