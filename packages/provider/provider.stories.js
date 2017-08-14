@@ -17,11 +17,6 @@ const query = gql`{
   author(slug: "fiona-hamilton") { name }
 }`;
 
-storiesOf("Provider", module).add("Provider", () => {
-  const WithData = connectGraphql(query)(Component);
-  return <WithData />;
-});
-
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: {
     __schema: {
@@ -50,6 +45,15 @@ const networkInterface = createNetworkInterface({
 const client = new ApolloClient({
   networkInterface,
   fragmentMatcher
+});
+
+storiesOf("Provider", module).add("Provider", () => {
+  const WithData = connectGraphql(query)(Component);
+  return (
+    <ApolloProvider client={client}>
+      <WithData />
+    </ApolloProvider>
+  );
 });
 
 storiesOf("Provider", module).add("AuthorProfileProvider", () =>

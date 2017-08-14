@@ -45,10 +45,10 @@
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
     "nock": "9.0.14",
-    "react": "15.5.4",
-    "react-dom": "15.5.4",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
     "react-native": "0.44.1",
-    "react-test-renderer": "15.5.4",
+    "react-test-renderer": "15.6.1",
     "webpack": "3.3.0"
   },
   "dependencies": {
@@ -57,13 +57,13 @@
     "lodash.get": "4.4.2",
     "lodash.pick": "4.4.0",
     "prop-types": "15.5.10",
-    "react-apollo": "1.4.10",
+    "react-apollo": "1.4.14",
     "react-native-web": "0.0.119"
   },
   "peerDependencies": {
     "@storybook/react-native": "3.2.4",
-    "react": "15.5.4",
-    "react-dom": "15.5.4",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
     "react-native": "0.44.1"
   },
   "publishConfig": {
