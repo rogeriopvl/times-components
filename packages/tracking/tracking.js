@@ -40,7 +40,7 @@ export const addTracking = (
 
       this.context.tracking.analytics({
         object: componentName,
-        action: "Viewed"
+        action: "Rendered"
       });
     }
 
@@ -68,7 +68,7 @@ export const addTracking = (
             }
           });
 
-          return props[funcName](...args);
+          return props[funcName] && props[funcName](...args);
         };
         this.wrappedFuncs.set(funcName, [props[funcName], funcWrapped]);
 

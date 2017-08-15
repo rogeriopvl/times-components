@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import ArticleSummary from "@times-components/article-summary";
-import Image from "@times-components/image";
+import Image, { ImageWithTracking } from "@times-components/image";
 
 const horizontalBreakpoint = 500;
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
 const isOrientationHorizontal = width => width > horizontalBreakpoint;
 
-class CardComponent extends React.Component {
+class BaseCardComponent extends React.Component {
   constructor(props) {
     super(props);
     this.handleLayout = this.handleLayout.bind(this);
@@ -52,7 +52,7 @@ class CardComponent extends React.Component {
   }
   render() {
     const { isHorizontal } = this.state;
-    const { date, headline, image, label, publication, style, text } = this.props;
+    const { date, headline, label, publication, style, text } = this.props;
 
     return (
       <View
@@ -70,7 +70,7 @@ class CardComponent extends React.Component {
             isHorizontal ? styles.horizontalImageContainer : null
           ]}
         >
-          <Image style={styles.image} source={image} />
+          {this.props.children}
         </View>
         <View
           style={[
@@ -91,17 +91,25 @@ class CardComponent extends React.Component {
   }
 }
 
-CardComponent.propTypes = Object.assign(
+BaseCardComponent.propTypes = Object.assign(
   {
     image: Image.propTypes.source
   },
   ArticleSummary.propTypes
 );
 
-CardComponent.defaultProps = {
+BaseCardComponent.defaultProps = {
   image: {
     uri: ""
   }
 };
 
-export default CardComponent;
+export const CardWithTracking = props =>
+  <BaseCardComponent {...props}>
+    <ImageWithTracking style={styles.image} source={props.image} />
+  </BaseCardComponent>;
+
+export default props =>
+  <BaseCardComponent {...props}>
+    <Image style={styles.image} source={props.image} />
+  </BaseCardComponent>;

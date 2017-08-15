@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Card from "@times-components/card";
+import Card, { CardWithTracking } from "@times-components/card";
+import { addTracking } from "@times-components/tracking";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,9 +24,9 @@ const AuthorProfileItem = item => {
 
   return (
     <View style={styles.container}>
-      <Card {...props} />
+      <CardWithTracking {...props} />
     </View>
   );
 };
 
-export default AuthorProfileItem;
+export default addTracking(AuthorProfileItem);

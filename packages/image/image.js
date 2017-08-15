@@ -43,15 +43,19 @@ class ImageComponent extends React.Component {
       width: 800,
       height: 600
     });
+
+    this.props.onError && this.props.onError();
   }
 
   handleLoad() {
-    return this.getSize(this.state.source.uri, (width, height) =>
+    this.getSize(this.state.source.uri, (width, height) =>
       this.calculateDimensions({
         width,
         height
       })
     );
+
+    this.props.onLoad && this.props.onLoad();
   }
 
   handleLayout({ nativeEvent }) {
