@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { storiesOf } from "@storybook/react-native";
 import AuthorProfile from "./author-profile";
 import example from "./example.json";
+import { addTrackingContext } from "@times-components/tracking";
 
 const styles = StyleSheet.create({
   background: {
@@ -33,12 +34,9 @@ storiesOf("AuthorProfile", module)
       isLoading: false
     };
 
-    props.data.articles.list.forEach(article => {
-      // eslint-disable-next-line
-      article.publishedTime = new Date(article.publishedTime);
-    });
+    const AuthorProfileWithTracking = addTrackingContext(AuthorProfile);
 
-    return story(<AuthorProfile {...props} />);
+    return story(<AuthorProfileWithTracking {...props} />);
   })
   .add("AuthorProfile Loading", () => {
     const props = {

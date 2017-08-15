@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import AuthorHead from "@times-components/author-head";
-import Pagination from "@times-components/pagination";
+import { PaginationWithTracking } from "@times-components/pagination";
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +55,7 @@ const AuthorProfileHeader = ({
       <AuthorHead {...authorProps} />
       <View style={styles.container}>
         <View style={styles.spacing}>
-          <Pagination {...paginationProps} />
+          <PaginationWithTracking {...paginationProps} />
         </View>
       </View>
     </View>
@@ -64,14 +64,14 @@ const AuthorProfileHeader = ({
 
 AuthorProfileHeader.propTypes = {
   biography: AuthorHead.propTypes.bio,
-  count: Pagination.propTypes.count,
+  count: PaginationWithTracking.propTypes.count,
   image: AuthorHead.propTypes.uri,
   jobTitle: AuthorHead.propTypes.title,
   name: AuthorHead.propTypes.name,
   onNext: PropTypes.func,
   onPrev: PropTypes.func,
-  page: Pagination.propTypes.page,
-  pageSize: Pagination.propTypes.pageSize,
+  page: PaginationWithTracking.propTypes.page,
+  pageSize: PaginationWithTracking.propTypes.pageSize,
   twitter: AuthorHead.propTypes.twitter
 };
 
