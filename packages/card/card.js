@@ -1,7 +1,8 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import ArticleSummary from "@times-components/article-summary";
-import Image, { ImageWithTracking } from "@times-components/image";
+import Image from "@times-components/image";
+import { addTracking } from "@times-components/tracking";
 
 const horizontalBreakpoint = 500;
 
@@ -104,10 +105,23 @@ BaseCardComponent.defaultProps = {
   }
 };
 
-export const CardWithTracking = props =>
-  <BaseCardComponent {...props}>
-    <ImageWithTracking style={styles.image} source={props.image} />
-  </BaseCardComponent>;
+const makeImageWithTracking = attrs =>
+  addTracking(Image, ["onError", "onLoad"], "CardImage", attrs);
+
+export const CardWithTracking = props => {
+  const ImageWithTracking = makeImageWithTracking({
+    title: props.imageTitle
+  });
+  return (
+    <BaseCardComponent {...props}>
+      <ImageWithTracking
+        style={styles.image}
+        source={props.image}
+        accessibilityLabel={props.imageTitle}
+      />
+    </BaseCardComponent>
+  );
+};
 
 export default props =>
   <BaseCardComponent {...props}>

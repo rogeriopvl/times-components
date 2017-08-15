@@ -57,6 +57,7 @@
   "dependencies": {
     "@times-components/article-summary": "0.2.2",
     "@times-components/image": "1.1.0",
+    "@times-components/tracking": "0.0.1",
     "react-native-web": "0.0.119"
   },
   "peerDependencies": {

@@ -14,6 +14,7 @@ const AuthorProfileItem = item => {
   const props = {
     date: item.publishedTime,
     headline: item.title,
+    imageTitle: item.leadAsset ? item.leadAsset.title : "",
     image: {
       uri: item.leadAsset ? item.leadAsset.crop.url : ""
     },

@@ -21,7 +21,8 @@ export const trackingContextTypes = {
 export const addTracking = (
   WrappedComponent,
   funcsToTrack = [],
-  alternativeName
+  alternativeName,
+  attrs
 ) => {
   const componentName = getDisplayName(WrappedComponent, alternativeName);
 
@@ -40,7 +41,8 @@ export const addTracking = (
 
       this.context.tracking.analytics({
         object: componentName,
-        action: "Rendered"
+        action: "Rendered",
+        props: attrs
       });
     }
 
@@ -64,7 +66,8 @@ export const addTracking = (
             object: componentName,
             action: "Action",
             props: {
-              actionName: funcName
+              actionName: funcName,
+              ...attrs
             }
           });
 
