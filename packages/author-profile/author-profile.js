@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { addTracking } from "@times-components/tracking";
 import AuthorProfileContent from "./author-profile-content";
 import AuthorProfileEmpty from "./author-profile-empty";
 import AuthorProfileError from "./author-profile-error";
@@ -21,7 +22,15 @@ const AuthorProfile = props => {
       page: props.page,
       pageSize: props.pageSize
     };
-    return <AuthorProfileContent {...props.data} {...extra} />;
+
+    const AuthorProfileContentWithTracking = addTracking(AuthorProfileContent, {
+      trackChildViews: {
+        id: "id",
+        attrs: ["indx"]
+      }
+    });
+
+    return <AuthorProfileContentWithTracking {...props.data} {...extra} />;
   }
 
   return <AuthorProfileEmpty />;

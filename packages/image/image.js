@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, Image, View } from "react-native";
+import { addTracking } from "@times-components/tracking";
 import placeholder from "./placeholder";
 
 const window = Dimensions.get("window");
@@ -42,15 +43,23 @@ class ImageComponent extends React.Component {
       width: 800,
       height: 600
     });
+
+    if (this.props.onError) {
+      this.props.onError();
+    }
   }
 
   handleLoad() {
-    return this.getSize(this.state.source.uri, (width, height) =>
+    this.getSize(this.state.source.uri, (width, height) =>
       this.calculateDimensions({
         width,
         height
       })
     );
+
+    if (this.props.onLoad) {
+      this.props.onLoad();
+    }
   }
 
   handleLayout({ nativeEvent }) {
@@ -85,5 +94,10 @@ class ImageComponent extends React.Component {
 }
 
 ImageComponent.propTypes = Image.propTypes;
+
+export const ImageWithTracking = addTracking(ImageComponent, {
+  withPerf: ["onLoad"],
+  withMonitoring: ["onError"]
+});
 
 export default ImageComponent;

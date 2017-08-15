@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import ArticleSummary from "@times-components/article-summary";
 import Image from "@times-components/image";
+import { addTracking } from "@times-components/tracking";
+import PropTypes from "prop-types";
 
 const horizontalBreakpoint = 500;
 
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
 
 const isOrientationHorizontal = width => width > horizontalBreakpoint;
 
-class CardComponent extends React.Component {
+class BaseCardComponent extends React.Component {
   constructor(props) {
     super(props);
     this.handleLayout = this.handleLayout.bind(this);
@@ -50,15 +52,8 @@ class CardComponent extends React.Component {
   }
   render() {
     const { isHorizontal } = this.state;
-    const {
-      date,
-      headline,
-      image,
-      label,
-      publication,
-      style,
-      text
-    } = this.props;
+
+    const { id, date, headline, label, publication, style, text } = this.props;
 
     const imageComponent =
       image && image.uri
@@ -75,6 +70,7 @@ class CardComponent extends React.Component {
 
     return (
       <View
+        id={id}
         onLayout={this.handleLayout}
         style={[
           styles.container,
@@ -82,7 +78,19 @@ class CardComponent extends React.Component {
           style
         ]}
       >
+<<<<<<< HEAD
         {imageComponent}
+=======
+        <View
+          style={[
+            styles.imageContainer,
+            styles.childrenContainer,
+            isHorizontal ? styles.horizontalImageContainer : null
+          ]}
+        >
+          {this.props.children}
+        </View>
+>>>>>>> feat: add tracking
         <View
           style={[
             styles.childrenContainer,
@@ -102,17 +110,54 @@ class CardComponent extends React.Component {
   }
 }
 
-CardComponent.propTypes = Object.assign(
+BaseCardComponent.propTypes = Object.assign(
   {
     image: Image.propTypes.source
   },
   ArticleSummary.propTypes
 );
 
-CardComponent.defaultProps = {
+BaseCardComponent.defaultProps = {
   image: {
     uri: ""
   }
 };
 
-export default CardComponent;
+const makeImageWithTracking = attrs =>
+  addTracking(Image, {
+    withPerf: ["onLoad"],
+    withMonitoring: ["onError"],
+    trackingName: "CardImage",
+    attrs
+  });
+
+export const CardWithTracking = props => {
+  const ImageWithTracking = makeImageWithTracking({
+    uri: props.image.uri
+  });
+  return (
+    <BaseCardComponent {...props}>
+      <ImageWithTracking
+        style={styles.image}
+        source={props.image}
+        accessibilityLabel={props.imageTitle}
+      />
+    </BaseCardComponent>
+  );
+};
+
+CardWithTracking.propTypes = {
+  imageTitle: PropTypes.string,
+  image: Image.propTypes.source
+};
+
+const Card = props =>
+  <BaseCardComponent {...props}>
+    <Image style={styles.image} source={props.image} />
+  </BaseCardComponent>;
+
+Card.propTypes = {
+  image: Image.propTypes.source
+};
+
+export default Card;

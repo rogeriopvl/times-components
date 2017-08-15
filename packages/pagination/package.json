@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@times-components/link": "0.3.2",
+    "@times-components/tracking": "0.0.1",
     "prop-types": "15.5.10",
     "react-native-web": "0.0.119"
   },

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import PropTypes from "prop-types";
 import Link from "@times-components/link";
+import { addTracking } from "@times-components/tracking";
 import withPageState from "./pagination-wrapper";
 
 const styles = StyleSheet.create({
@@ -173,6 +174,10 @@ Pagination.defaultProps = {
   pageSize: 20,
   hideResults: false
 };
+
+export const PaginationWithTracking = addTracking(Pagination, {
+  withAnalytics: ["onNext", "onPrev"]
+});
 
 export default Pagination;
 

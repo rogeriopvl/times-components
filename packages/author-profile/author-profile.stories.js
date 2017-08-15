@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react-native";
+import { addTrackingContext } from "@times-components/tracking";
 import AuthorProfile from "./author-profile";
 import example from "./example.json";
 
@@ -39,7 +40,9 @@ storiesOf("AuthorProfile", module)
       article.publishedTime = new Date(article.publishedTime);
     });
 
-    return story(<AuthorProfile {...props} />);
+    const AuthorProfileWithTracking = addTrackingContext(AuthorProfile);
+
+    return story(<AuthorProfileWithTracking {...props} />);
   })
   .add("AuthorProfile Loading", () => {
     const props = {

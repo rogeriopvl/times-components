@@ -1,9 +1,15 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import PropTypes from "prop-types";
-
 import Image from "@times-components/image";
+import { addTracking } from "@times-components/tracking";
 import Markup from "@times-components/markup";
+
+const ImageWithTracking = addTracking(Image, {
+  withPerf: ["onLoad"],
+  withMonitoring: ["onError"],
+  trackingName: "Avatar"
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +85,7 @@ const AuthorHead = props => {
         </Text>
       </View>
       <View style={styles.photoContainer}>
-        <Image source={{ uri }} style={styles.roundImage} />
+        <ImageWithTracking source={{ uri }} style={styles.roundImage} />
       </View>
     </View>
   );
