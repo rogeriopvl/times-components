@@ -53,6 +53,7 @@ class BaseCardComponent extends React.Component {
   render() {
     const { isHorizontal } = this.state;
     const {
+      id,
       date,
       headline,
       image,
@@ -77,6 +78,7 @@ class BaseCardComponent extends React.Component {
 
     return (
       <View
+        id={id}
         onLayout={this.handleLayout}
         style={[
           styles.container,

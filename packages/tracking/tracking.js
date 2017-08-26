@@ -36,10 +36,6 @@ export const addTracking = (
     constructor(props) {
       super(props);
 
-      if (this.context && !this.context.tracking) {
-        throw new Error("elements are being tracked with no context");
-      }
-
       this.wrappedFuncs = new Map();
       this.childData = {};
       this.viewed = new Set();
@@ -73,7 +69,7 @@ export const addTracking = (
     }
 
     componentDidMount() {
-      if (!this.context) {
+      if (!this.context || !this.context.tracking) {
         return;
       }
 
@@ -97,6 +93,10 @@ export const addTracking = (
     }
 
     onObserved([{ intersectionRatio, isIntersecting, time, target }]) {
+      if (this.context && !this.context.tracking) {
+        return;
+      }
+
       if (
         isIntersecting &&
         intersectionRatio === 1 &&
@@ -192,21 +192,25 @@ export const addTracking = (
     }
 
     render() {
-      const passProps = {
-        ...this.props,
-        ...withAnalytics.reduce(
-          this.getProps(this.props, this.wrapWithAnalytics.bind(this)),
-          {}
-        ),
-        ...withPerf.reduce(
-          this.getProps(this.props, this.wrapWithPerf.bind(this)),
-          {}
-        ),
-        ...withMonitoring.reduce(
-          this.getProps(this.props, this.wrapWithMonitoring.bind(this)),
-          {}
-        )
-      };
+      const passProps = this.context.tracking
+        ? {
+            ...this.props,
+            ...withAnalytics.reduce(
+              this.getProps(this.props, this.wrapWithAnalytics.bind(this)),
+              {}
+            ),
+            ...withPerf.reduce(
+              this.getProps(this.props, this.wrapWithPerf.bind(this)),
+              {}
+            ),
+            ...withMonitoring.reduce(
+              this.getProps(this.props, this.wrapWithMonitoring.bind(this)),
+              {}
+            )
+          }
+        : {
+            ...this.props
+          };
 
       if (trackChildViews) {
         passProps.observeChild = this.observeChild.bind(this);
