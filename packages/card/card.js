@@ -52,8 +52,15 @@ class BaseCardComponent extends React.Component {
   }
   render() {
     const { isHorizontal } = this.state;
-
-    const { id, date, headline, label, publication, style, text } = this.props;
+    const {
+      date,
+      headline,
+      image,
+      label,
+      publication,
+      style,
+      text
+    } = this.props;
 
     const imageComponent =
       image && image.uri
@@ -64,13 +71,12 @@ class BaseCardComponent extends React.Component {
               isHorizontal ? styles.horizontalImageContainer : null
             ]}
           >
-            <Image style={styles.image} source={image} />
+            {this.props.children}
           </View>
         : null;
 
     return (
       <View
-        id={id}
         onLayout={this.handleLayout}
         style={[
           styles.container,
@@ -78,19 +84,7 @@ class BaseCardComponent extends React.Component {
           style
         ]}
       >
-<<<<<<< HEAD
         {imageComponent}
-=======
-        <View
-          style={[
-            styles.imageContainer,
-            styles.childrenContainer,
-            isHorizontal ? styles.horizontalImageContainer : null
-          ]}
-        >
-          {this.props.children}
-        </View>
->>>>>>> feat: add tracking
         <View
           style={[
             styles.childrenContainer,
