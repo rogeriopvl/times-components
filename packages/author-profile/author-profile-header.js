@@ -1,8 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
-import AuthorHead from "@times-components/author-head";
-import { PaginationWithTracking } from "@times-components/pagination";
+import AuthorHead, {
+  AuthorHeadWithTracking
+} from "@times-components/author-head";
+import Pagination, {
+  PaginationWithTracking
+} from "@times-components/pagination";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +23,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const AuthorProfileHeader = ({
+const extractProps = ({
   count,
   biography: bio,
   page,
@@ -32,36 +36,26 @@ const AuthorProfileHeader = ({
   pageSize,
   twitter
 }) => {
-  const authorProps = {
-    bio,
-    name,
-    uri,
-    title,
-    twitter
+  return {
+    authorProps: {
+      bio,
+      name,
+      uri,
+      title,
+      twitter
+    },
+    paginationProps: {
+      count,
+      generatePageLink,
+      onNext,
+      onPrev,
+      page,
+      pageSize
+    }
   };
-
-  const paginationProps = {
-    count,
-    generatePageLink,
-    onNext,
-    onPrev,
-    page,
-    pageSize
-  };
-
-  return (
-    <View>
-      <AuthorHead {...authorProps} />
-      <View style={styles.container}>
-        <View style={styles.spacing}>
-          <PaginationWithTracking {...paginationProps} />
-        </View>
-      </View>
-    </View>
-  );
 };
 
-AuthorProfileHeader.propTypes = {
+const propTypes = {
   biography: AuthorHead.propTypes.bio,
   count: PaginationWithTracking.propTypes.count,
   image: AuthorHead.propTypes.uri,
@@ -75,7 +69,7 @@ AuthorProfileHeader.propTypes = {
   twitter: AuthorHead.propTypes.twitter
 };
 
-AuthorProfileHeader.defaultProps = {
+const defaultProps = {
   count: 0,
   biography: null,
   page: 0,
@@ -88,5 +82,39 @@ AuthorProfileHeader.defaultProps = {
   pageSize: 20,
   twitter: null
 };
+
+export const AuthorProfileHeaderWithTracking = props => {
+  const { authorProps, paginationProps } = extractProps(props);
+  return (
+    <View>
+      <AuthorHeadWithTracking {...authorProps} />
+      <View style={styles.container}>
+        <View style={styles.spacing}>
+          <PaginationWithTracking {...paginationProps} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+AuthorProfileHeaderWithTracking.propTypes = propTypes;
+AuthorProfileHeaderWithTracking.defaultProps = defaultProps;
+
+const AuthorProfileHeader = props => {
+  const { authorProps, paginationProps } = extractProps(props);
+  return (
+    <View>
+      <AuthorHead {...authorProps} />
+      <View style={styles.container}>
+        <View style={styles.spacing}>
+          <Pagination {...paginationProps} />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+AuthorProfileHeader.propTypes = propTypes;
+AuthorProfileHeader.defaultProps = defaultProps;
 
 export default AuthorProfileHeader;

@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const AuthorHead = props => {
-  const { name, title, twitter, bio, uri } = props;
+const BaseAuthorHead = props => {
+  const { name, title, twitter, bio } = props;
 
   return (
     <View style={styles.wrapper} pointerEvents="box-none">
@@ -85,13 +85,13 @@ const AuthorHead = props => {
         </Text>
       </View>
       <View style={styles.photoContainer}>
-        <ImageWithTracking source={{ uri }} style={styles.roundImage} />
+          {this.props.children}
       </View>
     </View>
   );
 };
 
-AuthorHead.defaultProps = {
+BaseAuthorHead.defaultProps = {
   name: "",
   title: "",
   uri: "",
@@ -99,7 +99,7 @@ AuthorHead.defaultProps = {
   twitter: null
 };
 
-AuthorHead.propTypes = {
+BaseAuthorHead.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   uri: PropTypes.string,
@@ -107,4 +107,13 @@ AuthorHead.propTypes = {
   twitter: PropTypes.string
 };
 
-export default AuthorHead;
+export const AuthorHeadWithTracking = (props) =>
+  <BaseAuthorHead {...props}>
+    <ImageWithTracking source={{ props.uri }} style={styles.roundImage} />
+  </BaseAuthorHead>;
+
+export default (
+  <BaseAuthorHead>
+    <Image source={{ uri }} style={styles.roundImage} />
+  </BaseAuthorHead>
+);

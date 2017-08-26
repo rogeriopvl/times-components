@@ -1,59 +1,61 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { addTracking } from "@times-components/tracking";
-import AuthorProfileContent from "./author-profile-content";
+import AuthorProfileContent, {
+  AuthorProfileContentWithTracking
+} from "./author-profile-content";
 import AuthorProfileEmpty from "./author-profile-empty";
 import AuthorProfileError from "./author-profile-error";
 import AuthorProfileLoading from "./author-profile-loading";
 
-const AuthorProfile = props => {
-  if (props.isLoading) {
-    return <AuthorProfileLoading />;
-  }
+const makeAuthorProfile = Content => {
+  const AuthorProfile = props => {
+    if (props.isLoading) {
+      return <AuthorProfileLoading />;
+    }
 
-  if (props.error) {
-    return <AuthorProfileError {...props.error} />;
-  }
+    if (props.error) {
+      return <AuthorProfileError {...props.error} />;
+    }
 
-  if (!!props.data === true) {
-    const extra = {
-      onNext: props.onNext,
-      onPrev: props.onPrev,
-      page: props.page,
-      pageSize: props.pageSize
-    };
+    if (!!props.data === true) {
+      const extra = {
+        onNext: props.onNext,
+        onPrev: props.onPrev,
+        page: props.page,
+        pageSize: props.pageSize
+      };
 
-    const AuthorProfileContentWithTracking = addTracking(AuthorProfileContent, {
-      trackChildViews: {
-        id: "id",
-        attrs: ["indx"]
-      }
-    });
+      return <Content {...props.data} {...extra} />;
+    }
 
-    return <AuthorProfileContentWithTracking {...props.data} {...extra} />;
-  }
+    return <AuthorProfileEmpty />;
+  };
 
-  return <AuthorProfileEmpty />;
+  AuthorProfile.propTypes = {
+    data: PropTypes.shape(AuthorProfileContent.propTypes),
+    error: PropTypes.shape(),
+    isLoading: PropTypes.bool,
+    onNext: AuthorProfileContent.propTypes.onNext,
+    onPrev: AuthorProfileContent.propTypes.onPrev,
+    page: AuthorProfileContent.propTypes.page,
+    pageSize: AuthorProfileContent.propTypes.pageSize
+  };
+
+  AuthorProfile.defaultProps = {
+    data: null,
+    error: null,
+    isLoading: true,
+    onNext: () => {},
+    onPrev: () => {},
+    page: 1,
+    pageSize: 10
+  };
+
+  return AuthorProfile;
 };
 
-AuthorProfile.propTypes = {
-  data: PropTypes.shape(AuthorProfileContent.propTypes),
-  error: PropTypes.shape(),
-  isLoading: PropTypes.bool,
-  onNext: AuthorProfileContent.propTypes.onNext,
-  onPrev: AuthorProfileContent.propTypes.onPrev,
-  page: AuthorProfileContent.propTypes.page,
-  pageSize: AuthorProfileContent.propTypes.pageSize
-};
+export const AuthorProfileWithTracking = makeAuthorProfile(
+  AuthorProfileContentWithTracking
+);
 
-AuthorProfile.defaultProps = {
-  data: null,
-  error: null,
-  isLoading: true,
-  onNext: () => {},
-  onPrev: () => {},
-  page: 1,
-  pageSize: 10
-};
-
-export default AuthorProfile;
+export default makeAuthorProfile(AuthorProfileContent);
