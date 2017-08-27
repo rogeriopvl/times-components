@@ -1,12 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
-import AuthorHead, {
-  AuthorHeadWithTracking
-} from "@times-components/author-head";
-import Pagination, {
-  PaginationWithTracking
-} from "@times-components/pagination";
+import AuthorHead, { AuthorHeadWithTracking } from "@times-components/author-head";
+import Pagination, { PaginationWithTracking } from "@times-components/pagination";
 
 const styles = StyleSheet.create({
   container: {

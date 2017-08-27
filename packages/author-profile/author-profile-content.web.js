@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { addTracking } from "@times-components/tracking";
-import AuthorProfileHeader, {
-  AuthorProfileHeaderWithTracking
-} from "./author-profile-header";
-import AuthorProfileItem, {
-  AuthorProfileItemWithTracking
-} from "./author-profile-item";
+import AuthorProfileHeader, { AuthorProfileHeaderWithTracking } from "./author-profile-header";
+import AuthorProfileItem, { AuthorProfileItemWithTracking } from "./author-profile-item";
 import AuthorProfileItemSeparator from "./author-profile-item-separator";
 
 const styles = StyleSheet.create({
@@ -29,8 +25,9 @@ const makeAuthorProfileContent = (Header, Item) => {
         <View>
           <Header {...this.props} />
           {this.props.articles.list.map((item, key) => {
-            const separatorComponent =
-              key > 0 ? <AuthorProfileItemSeparator /> : null;
+            const separatorComponent = key > 0
+              ? <AuthorProfileItemSeparator />
+              : null;
 
             return (
               <View key={item.id} style={styles.container}>
@@ -58,11 +55,13 @@ const makeAuthorProfileContent = (Header, Item) => {
   return AuthorProfile;
 };
 
+const AuthorProfileContent = makeAuthorProfileContent(
+  AuthorProfileHeaderWithTracking,
+  AuthorProfileItemWithTracking
+);
+
 export const AuthorProfileContentWithTracking = addTracking(
-  makeAuthorProfileContent(
-    AuthorProfileHeaderWithTracking,
-    AuthorProfileItemWithTracking
-  ),
+  AuthorProfileContent,
   {
     trackChildViews: {
       id: "id",

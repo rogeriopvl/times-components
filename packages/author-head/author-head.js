@@ -85,13 +85,13 @@ const BaseAuthorHead = props => {
         </Text>
       </View>
       <View style={styles.photoContainer}>
-        {this.props.children}
+        {props.children}
       </View>
     </View>
   );
 };
 
-BaseAuthorHead.defaultProps = {
+const defaultProps = {
   name: "",
   title: "",
   uri: "",
@@ -99,7 +99,7 @@ BaseAuthorHead.defaultProps = {
   twitter: null
 };
 
-BaseAuthorHead.propTypes = {
+const propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   uri: PropTypes.string,
@@ -112,8 +112,15 @@ export const AuthorHeadWithTracking = props =>
     <ImageWithTracking source={{ uri: props.uri }} style={styles.roundImage} />
   </BaseAuthorHead>;
 
-export default (
-  <BaseAuthorHead>
-    <Image source={{ uri }} style={styles.roundImage} />
-  </BaseAuthorHead>
-);
+AuthorHeadWithTracking.propTypes = propTypes;
+AuthorHeadWithTracking.defaultProps = defaultProps;
+
+const AuthorHead = props =>
+  <BaseAuthorHead {...props}>
+    <Image source={{ uri: props.uri }} style={styles.roundImage} />
+  </BaseAuthorHead>;
+
+AuthorHead.propTypes = propTypes;
+AuthorHead.defaultProps = defaultProps;
+
+export default AuthorHead;
