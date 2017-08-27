@@ -84,12 +84,7 @@ export const addTracking = (
         });
       }
 
-      if (trackChildViews && trackChildViews.listPath) {
-        const list = _get(this.props, trackChildViews.listPath, []);
-        list.forEach((props, indx) => {
-          this.observeChild({ ...props, indx });
-        });
-      }
+      this.observeChildren();
 
       this.context.tracking.perf({
         object: componentName,
@@ -98,6 +93,10 @@ export const addTracking = (
           time: window.performance.now() - this.state.startRender
         }
       });
+    }
+
+    componentDidUpdate() {
+      this.observeChildren();
     }
 
     onObserved([{ intersectionRatio, isIntersecting, time, target }]) {
@@ -135,6 +134,17 @@ export const addTracking = (
     observeChild(props) {
       this.observer.observe(document.getElementById(props[trackChildViews.id]));
       this.childData[props[trackChildViews.id]] = props;
+    }
+
+    observeChildren() {
+      if (trackChildViews && trackChildViews.listPath) {
+        const list = _get(this.props, trackChildViews.listPath, []);
+        list.forEach((props, indx) => {
+          if (!this.childData[props[trackChildViews.id]]) {
+            this.observeChild({ ...props, indx });
+          }
+        });
+      }
     }
 
     getProps(props, trackingCb) {
