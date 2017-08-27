@@ -53,15 +53,15 @@ const extractProps = ({
 
 const propTypes = {
   biography: AuthorHead.propTypes.bio,
-  count: PaginationWithTracking.propTypes.count,
+  count: Pagination.propTypes.count,
   image: AuthorHead.propTypes.uri,
-  generatePageLink: PaginationWithTracking.propTypes.generatePageLink,
+  generatePageLink: Pagination.propTypes.generatePageLink,
   jobTitle: AuthorHead.propTypes.title,
   name: AuthorHead.propTypes.name,
   onNext: PropTypes.func,
   onPrev: PropTypes.func,
-  page: PaginationWithTracking.propTypes.page,
-  pageSize: PaginationWithTracking.propTypes.pageSize,
+  page: Pagination.propTypes.page,
+  pageSize: Pagination.propTypes.pageSize,
   twitter: AuthorHead.propTypes.twitter
 };
 
@@ -79,38 +79,28 @@ const defaultProps = {
   twitter: null
 };
 
-export const AuthorProfileHeaderWithTracking = props => {
+const makeAuthorProfileHeader = (Head, Pages) => props => {
   const { authorProps, paginationProps } = extractProps(props);
-  return (
+  const AuthorProfileHeader = (
     <View>
-      <AuthorHeadWithTracking {...authorProps} />
+      <Head {...authorProps} />
       <View style={styles.container}>
         <View style={styles.spacing}>
-          <PaginationWithTracking {...paginationProps} />
+          <Pages {...paginationProps} />
         </View>
       </View>
     </View>
   );
+
+  AuthorProfileHeader.propTypes = propTypes;
+  AuthorProfileHeader.defaultProps = defaultProps;
+
+  return AuthorProfileHeader;
 };
 
-AuthorProfileHeaderWithTracking.propTypes = propTypes;
-AuthorProfileHeaderWithTracking.defaultProps = defaultProps;
+export const AuthorProfileHeaderWithTracking = makeAuthorProfileHeader(
+  AuthorHeadWithTracking,
+  PaginationWithTracking
+);
 
-const AuthorProfileHeader = props => {
-  const { authorProps, paginationProps } = extractProps(props);
-  return (
-    <View>
-      <AuthorHead {...authorProps} />
-      <View style={styles.container}>
-        <View style={styles.spacing}>
-          <Pagination {...paginationProps} />
-        </View>
-      </View>
-    </View>
-  );
-};
-
-AuthorProfileHeader.propTypes = propTypes;
-AuthorProfileHeader.defaultProps = defaultProps;
-
-export default AuthorProfileHeader;
+export default makeAuthorProfileHeader(AuthorHead, Pagination);
