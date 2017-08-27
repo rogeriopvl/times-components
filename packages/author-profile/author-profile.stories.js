@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react-native";
-import { addTrackingContext } from "@times-components/tracking";
+import { addTrackingContext, logger } from "@times-components/tracking";
 import { withPageState } from "@times-components/pagination";
 import AuthorProfile, { AuthorProfileWithTracking } from "./author-profile";
 import example from "./example.json";
@@ -76,5 +76,12 @@ storiesOf("AuthorProfile", module)
       withPageState(AuthorProfileWithTracking)
     );
 
-    return story(<AuthorProfileWithTrackingContext {...props} />);
+    return story(
+      <AuthorProfileWithTrackingContext
+        {...props}
+        perfStream={logger.perf}
+        monitoringStream={logger.monitoring}
+        analyticsStream={logger.analytics}
+      />
+    );
   });

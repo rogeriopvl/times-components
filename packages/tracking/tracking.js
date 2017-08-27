@@ -248,16 +248,18 @@ export const addTracking = (
 export const addTrackingContext = WrappedComponent => {
   class WithTrackingContext extends Component {
     getChildContext() {
+      const props = this.props;
+
       return {
         tracking: {
-          perf(...args) {
-            console.log("doing something with perf", ...args);
+          perf(args) {
+            props.perfStream(args);
           },
-          monitoring(...args) {
-            console.log("doing something with monitoring", ...args);
+          monitoring(args) {
+            props.monitoringStream(args);
           },
-          analytics(...args) {
-            console.log("doing something with analytics", ...args);
+          analytics(args) {
+            props.analyticsStream(args);
           },
           addTracking,
           addTrackingContext
@@ -278,7 +280,32 @@ export const addTrackingContext = WrappedComponent => {
 
   WithTrackingContext.childContextTypes = trackingContextTypes;
   WithTrackingContext.propTypes = WrappedComponent.propTypes;
-  WithTrackingContext.defaultProps = WrappedComponent.defaultProps;
+  WithTrackingContext.defaultProps = Object.assign(
+    {
+      perfStream() {},
+      monitoringStream() {},
+      analyticsStream() {}
+    },
+    WrappedComponent.defaultProps
+  );
 
   return WithTrackingContext;
+};
+
+export const logger = {
+  perf({ object, props }) {
+    console.log(`%c ${object}: ${props.time}`, `color: green`);
+  },
+  monitoring({ object, action, props }) {
+    console.log(
+      `%c ${object}-${action}: ${JSON.stringify(props)}`,
+      `color: red`
+    );
+  },
+  analytics({ object, action, props }) {
+    console.log(
+      `%c ${object}-${action}: ${JSON.stringify(props)}`,
+      `color: blue`
+    );
+  }
 };
