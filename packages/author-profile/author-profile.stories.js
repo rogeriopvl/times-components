@@ -2,8 +2,9 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react-native";
-import AuthorProfile from "./author-profile";
+import AuthorProfile, { AuthorProfileWithTracking } from "./author-profile";
 import example from "./example.json";
+import { addTrackingContext } from "../tracking/tracking";
 
 const styles = StyleSheet.create({
   background: {
@@ -54,4 +55,25 @@ storiesOf("AuthorProfile", module)
     };
 
     return story(<AuthorProfile {...props} />);
+  })
+  .add("AuthorProfile with tracking", () => {
+    const props = {
+      data: Object.assign({}, example, {
+        count: example.articles.count,
+        pageSize: 10,
+        page: 1
+      }),
+      isLoading: false
+    };
+
+    props.data.articles.list.forEach(article => {
+      // eslint-disable-next-line
+      article.publishedTime = new Date(article.publishedTime);
+    });
+
+    const AuthorProfileWithTrackingContext = addTrackingContext(
+      AuthorProfileWithTracking
+    );
+
+    return story(<AuthorProfileWithTrackingContext {...props} />);
   });
