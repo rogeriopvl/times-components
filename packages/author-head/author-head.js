@@ -85,7 +85,7 @@ const BaseAuthorHead = props => {
         </Text>
       </View>
       <View style={styles.photoContainer}>
-          {this.props.children}
+        {this.props.children}
       </View>
     </View>
   );
@@ -107,9 +107,9 @@ BaseAuthorHead.propTypes = {
   twitter: PropTypes.string
 };
 
-export const AuthorHeadWithTracking = (props) =>
+export const AuthorHeadWithTracking = props =>
   <BaseAuthorHead {...props}>
-    <ImageWithTracking source={{ props.uri }} style={styles.roundImage} />
+    <ImageWithTracking source={{ uri: props.uri }} style={styles.roundImage} />
   </BaseAuthorHead>;
 
 export default (
