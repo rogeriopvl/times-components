@@ -144,7 +144,7 @@ export const addTracking = (
         if (wrappedFunc && props[funcName] === origFunc) {
           return {
             ...funcsAsProps,
-            funcName: wrappedFunc
+            [funcName]: wrappedFunc
           };
         }
 

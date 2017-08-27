@@ -2,9 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react-native";
+import { addTrackingContext } from "@times-components/tracking";
+import { withPageState } from "@times-components/pagination";
 import AuthorProfile, { AuthorProfileWithTracking } from "./author-profile";
 import example from "./example.json";
-import { addTrackingContext } from "../tracking/tracking";
 
 const styles = StyleSheet.create({
   background: {
@@ -72,7 +73,7 @@ storiesOf("AuthorProfile", module)
     });
 
     const AuthorProfileWithTrackingContext = addTrackingContext(
-      AuthorProfileWithTracking
+      withPageState(AuthorProfileWithTracking)
     );
 
     return story(<AuthorProfileWithTrackingContext {...props} />);
