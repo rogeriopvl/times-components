@@ -15,11 +15,6 @@ const styles = StyleSheet.create({
 
 const makeAuthorProfileContent = (Header, Item) => {
   class AuthorProfile extends Component {
-    componentDidMount() {
-      this.props.articles.list.forEach((props, indx) => {
-        this.props.observeChild({ ...props, indx });
-      });
-    }
     render() {
       return (
         <View>
@@ -65,7 +60,8 @@ export const AuthorProfileContentWithTracking = addTracking(
   {
     trackChildViews: {
       id: "id",
-      attrs: ["indx"]
+      attrs: ["indx"],
+      listPath: 'articles.list'
     }
   }
 );

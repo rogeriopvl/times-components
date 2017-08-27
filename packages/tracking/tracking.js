@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import PropTypes from "prop-types";
+import _get from "lodash.get";
 
 const getDisplayName = (WrappedComponent, alternativeName) =>
   alternativeName ||
@@ -80,6 +81,13 @@ export const addTracking = (
           props: {
             ...attrs
           }
+        });
+      }
+
+      if (trackChildViews && trackChildViews.listPath) {
+        const list = _get(this.props, trackChildViews.listPath, []);
+        list.forEach((props, indx) => {
+          this.observeChild({ ...props, indx });
         });
       }
 
@@ -211,10 +219,6 @@ export const addTracking = (
         : {
             ...this.props
           };
-
-      if (trackChildViews) {
-        passProps.observeChild = this.observeChild.bind(this);
-      }
 
       return <WrappedComponent {...passProps} />;
     }
