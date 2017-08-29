@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import PropTypes from "prop-types";
-import _get from "lodash.get";
 
 const getDisplayName = (WrappedComponent, alternativeName) =>
   alternativeName ||
@@ -71,8 +70,6 @@ export const makeTracking = (
         });
       }
 
-      this.observeChildren();
-
       this.context.tracking.perf({
         object: componentName,
         action: "Rendered",
@@ -82,51 +79,24 @@ export const makeTracking = (
       });
     }
 
-    componentDidUpdate() {
-      this.observeChildren();
-    }
+    onChildView(id, data, time) {
+      const custom = (trackChildViews.attrs || []).reduce(
+        (ck, key) => ({
+          ...ck,
+          [key]: data[key]
+        }),
+        {}
+      );
 
-    onObserved([{ intersectionRatio, isIntersecting, time, target }]) {
-      if (this.context && !this.context.tracking) {
-        return;
-      }
-
-      if (
-        isIntersecting &&
-        intersectionRatio === 1 &&
-        !this.viewed.has(target.id)
-      ) {
-        this.viewed.add(target.id);
-
-        const custom = (trackChildViews.attrs || []).reduce(
-          (ck, key) => ({
-            ...ck,
-            [key]: this.childData[target.id][key]
-          }),
-          {}
-        );
-
-        this.context.tracking.analytics({
-          object: `${componentName}Child`,
-          action: "Viewed",
-          props: {
-            id: target.id,
-            time: this.makeDateFromElapsedTime(time),
-            ...custom
-          }
-        });
-      }
-    }
-
-    observeChildren() {
-      if (trackChildViews && trackChildViews.listPath) {
-        const list = _get(this.props, trackChildViews.listPath, []);
-        list.forEach((props, indx) => {
-          if (!this.childData[props[trackChildViews.id]]) {
-            this.observeChild({ ...props, indx });
-          }
-        });
-      }
+      this.context.tracking.analytics({
+        object: `${componentName}Child`,
+        action: "Viewed",
+        props: {
+          id,
+          time,
+          ...custom
+        }
+      });
     }
 
     getProps(props, trackingCb) {
@@ -191,28 +161,28 @@ export const makeTracking = (
       });
     }
 
-    render() {
+    render(customProps = {}) {
       const passProps = this.context.tracking
         ? {
-          ...this.props,
-          ...withAnalytics.reduce(
-            this.getProps(this.props, this.wrapWithAnalytics.bind(this)),
-            {}
-          ),
-          ...withPerf.reduce(
-            this.getProps(this.props, this.wrapWithPerf.bind(this)),
-            {}
-          ),
-          ...withMonitoring.reduce(
-            this.getProps(this.props, this.wrapWithMonitoring.bind(this)),
-            {}
-          )
-        }
+            ...this.props,
+            ...withAnalytics.reduce(
+              this.getProps(this.props, this.wrapWithAnalytics.bind(this)),
+              {}
+            ),
+            ...withPerf.reduce(
+              this.getProps(this.props, this.wrapWithPerf.bind(this)),
+              {}
+            ),
+            ...withMonitoring.reduce(
+              this.getProps(this.props, this.wrapWithMonitoring.bind(this)),
+              {}
+            )
+          }
         : {
-          ...this.props
-        };
+            ...this.props
+          };
 
-      return <WrappedComponent {...passProps} />;
+      return <WrappedComponent {...passProps} {...customProps} />;
     }
   }
 

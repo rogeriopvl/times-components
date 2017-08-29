@@ -26,15 +26,23 @@ export const addTracking = (
       super(props);
     }
 
-    observeChild(props) {
-
-    }
-
     currentTime() {
-
+      return new Date().getTime();
     }
 
-    makeDateFromElapsedTime() {
+    onViewed(data) {
+      const id = data[trackChildViews.id];
 
+      if (this.viewed.has(id)) {
+        return;
+      }
+
+      this.viewed.add(id);
+
+      this.onChildView(id, data, new Date().getTime());
+    }
+
+    render() {
+      return super.render({ onViewed: this.onViewed.bind(this) });
     }
   };
