@@ -9,8 +9,9 @@ const AuthorProfile = props =>
   <ScrollView>
     <AuthorProfileHeader {...props} />
     {props.articles.list.map((item, key) => {
-      const separatorComponent =
-        key > 0 ? <AuthorProfileItemSeparator /> : null;
+      const separatorComponent = key > 0
+        ? <AuthorProfileItemSeparator />
+        : null;
 
       return (
         <View key={item.id}>
@@ -29,5 +30,7 @@ AuthorProfile.propTypes = Object.assign(
   },
   AuthorProfileHeader.propTypes
 );
+
+export const AuthorProfileContentWithTracking = AuthorProfile;
 
 export default AuthorProfile;
