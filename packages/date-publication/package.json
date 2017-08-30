@@ -44,21 +44,18 @@
     "babel-preset-react-native": "1.9.2",
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-native": "0.42.3",
-    "react-test-renderer": "15.4.2",
     "webpack": "3.3.0"
   },
   "dependencies": {
     "date-fns": "1.28.5",
-    "prop-types": "15.5.10",
-    "react-native-web": "0.0.119"
+    "prop-types": "15.5.10"
   },
   "peerDependencies": {
-    "react": ">=15",
-    "react-dom": ">=15",
-    "react-native": ">=0.42"
+    "react": ">=16",
+    "react-dom": ">=16",
+    "react-test-renderer": ">=16",
+    "react-native": ">=0.47",
+    "react-native-web": ">=0.0.113"
   },
   "publishConfig": {
     "access": "public"

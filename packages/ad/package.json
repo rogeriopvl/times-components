@@ -47,22 +47,20 @@
     "jest": "20.0.4",
     "react": "15.4.2",
     "react-addons-test-utils": "^15.6.0",
-    "react-dom": "15.4.2",
-    "react-native": "0.42.3",
-    "react-test-renderer": "15.4.2",
     "webpack": "3.3.0"
   },
   "dependencies": {
     "prop-types": "15.5.10",
     "react-broadcast": "0.1.2",
-    "react-native-web": "0.0.119",
     "react-style-proptype": "3.0.0",
     "svgs": "2.3.0"
   },
   "peerDependencies": {
-    "react": ">=15",
-    "react-dom": ">=15",
-    "react-native": ">=0.42"
+    "react": ">=16",
+    "react-dom": ">=16",
+    "react-test-renderer": ">=16",
+    "react-native": ">=0.47",
+    "react-native-web": ">=0.0.113"
   },
   "publishConfig": {
     "access": "public"
