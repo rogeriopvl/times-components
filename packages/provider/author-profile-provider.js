@@ -41,7 +41,7 @@ const query = gql`
               }
             }
           }
-          teaser
+          content
         }
       }
     }

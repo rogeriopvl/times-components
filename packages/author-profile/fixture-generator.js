@@ -22,7 +22,7 @@ const article = () => ({
         "http://nu-cps-imgsrv-tnl-dev-webapp.elb.tnl-dev.ntch.co.uk/imageserver/image/90cfa89f4ebe003ab967e64b9c79c9afa520c273.jpg?crop=620%2C413%2C0%2C0"
     }
   },
-  teaser: [
+  content: [
     {
       name: "p",
       children: [
