@@ -38,7 +38,13 @@ exports[`renders data 1`] = `
               Object {
                 "color": "#000",
                 "fontFamily": "TimesModern-Bold",
+<<<<<<< HEAD
                 "fontSize": 45,
+=======
+                "fontSize": 30,
+                "fontWeight": "400",
+                "lineHeight": 30,
+>>>>>>> fix: adds visual fixes to author head
                 "paddingTop": 32,
               }
             }
@@ -55,7 +61,10 @@ exports[`renders data 1`] = `
               Object {
                 "color": "#696969",
                 "fontFamily": "TimesDigital-RegularSC",
+<<<<<<< HEAD
                 "fontSize": 15,
+=======
+>>>>>>> fix: adds visual fixes to author head
               }
             }
           >
@@ -76,7 +85,11 @@ exports[`renders data 1`] = `
                 Object {
                   "color": "#006699",
                   "fontFamily": "GillSansMTStd-Medium",
+<<<<<<< HEAD
                   "fontSize": 18,
+=======
+                  "fontSize": 15,
+>>>>>>> fix: adds visual fixes to author head
                   "paddingTop": 16,
                   "textDecorationLine": "none",
                 },
@@ -94,9 +107,15 @@ exports[`renders data 1`] = `
               Object {
                 "color": "#333",
                 "fontFamily": "TimesDigital-Regular",
+<<<<<<< HEAD
                 "fontSize": 16,
                 "lineHeight": 26,
                 "maxWidth": "88%",
+=======
+                "fontSize": 15,
+                "lineHeight": 25,
+                "maxWidth": "66%",
+>>>>>>> fix: adds visual fixes to author head
                 "paddingBottom": 32,
                 "textAlign": "center",
               }
@@ -443,7 +462,13 @@ exports[`renders data from graphql 1`] = `
               Object {
                 "color": "#000",
                 "fontFamily": "TimesModern-Bold",
+<<<<<<< HEAD
                 "fontSize": 45,
+=======
+                "fontSize": 30,
+                "fontWeight": "400",
+                "lineHeight": 30,
+>>>>>>> fix: adds visual fixes to author head
                 "paddingTop": 32,
               }
             }
@@ -460,7 +485,10 @@ exports[`renders data from graphql 1`] = `
               Object {
                 "color": "#696969",
                 "fontFamily": "TimesDigital-RegularSC",
+<<<<<<< HEAD
                 "fontSize": 15,
+=======
+>>>>>>> fix: adds visual fixes to author head
               }
             }
           >
@@ -481,7 +509,11 @@ exports[`renders data from graphql 1`] = `
                 Object {
                   "color": "#006699",
                   "fontFamily": "GillSansMTStd-Medium",
+<<<<<<< HEAD
                   "fontSize": 18,
+=======
+                  "fontSize": 15,
+>>>>>>> fix: adds visual fixes to author head
                   "paddingTop": 16,
                   "textDecorationLine": "none",
                 },
@@ -499,9 +531,15 @@ exports[`renders data from graphql 1`] = `
               Object {
                 "color": "#333",
                 "fontFamily": "TimesDigital-Regular",
+<<<<<<< HEAD
                 "fontSize": 16,
                 "lineHeight": 26,
                 "maxWidth": "88%",
+=======
+                "fontSize": 15,
+                "lineHeight": 25,
+                "maxWidth": "66%",
+>>>>>>> fix: adds visual fixes to author head
                 "paddingBottom": 32,
                 "textAlign": "center",
               }
