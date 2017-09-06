@@ -1,6 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 // eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  ApolloClient,
+  ApolloProvider,
+  createBatchingNetworkInterface,
+  IntrospectionFragmentMatcher
+} from "react-apollo";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from "@storybook/react-native";
 import AuthorProfile from "./author-profile";
 import example from "./example.json";
@@ -16,6 +23,37 @@ const styles = StyleSheet.create({
   }
 });
 
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData: {
+    __schema: {
+      types: [
+        {
+          kind: "UNION",
+          name: "Media",
+          possibleTypes: [
+            {
+              name: "Image"
+            },
+            {
+              name: "Video"
+            }
+          ]
+        }
+      ]
+    }
+  }
+});
+
+const networkInterface = createBatchingNetworkInterface({
+  uri: "http://localhost:4000/graphql/",
+  batchInterval: 20
+});
+
+const client = new ApolloClient({
+  networkInterface,
+  fragmentMatcher
+});
+
 const story = m =>
   <View style={styles.background}>
     <View style={styles.container}>
@@ -23,15 +61,15 @@ const story = m =>
     </View>
   </View>;
 
-storiesOf("AuthorProfile", module)
-  .add("AuthorProfile", () => {
+storiesOf("Author Profile", module)
+  .add("Default", () => {
     const props = {
       data: Object.assign({}, example, {
         count: example.articles.count,
         pageSize: 10,
         page: 1
       }),
-      isLoading: false
+      loading: false
     };
 
     props.data.articles.list.forEach(article => {
@@ -41,17 +79,29 @@ storiesOf("AuthorProfile", module)
 
     return story(<AuthorProfile {...props} />);
   })
-  .add("AuthorProfile Loading", () => {
+  .add("Loading", () => {
     const props = {
-      isLoading: true
+      loading: true
     };
 
     return story(<AuthorProfile {...props} />);
   })
-  .add("AuthorProfile Empty State", () => {
+  .add("Empty State", () => {
     const props = {
-      isLoading: false
+      loading: false
     };
 
     return story(<AuthorProfile {...props} />);
-  });
+  })
+  .add("Provider", () =>
+    story(
+      <ApolloProvider client={client}>
+        <AuthorProfile
+          imageRatio="3:2"
+          slug="fiona-hamilton"
+          page={1}
+          pageSize={3}
+        />
+      </ApolloProvider>
+    )
+  );
