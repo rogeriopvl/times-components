@@ -39,12 +39,16 @@ exports[`renders data 1`] = `
                 "color": "#000",
                 "fontFamily": "TimesModern-Bold",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 45,
 =======
                 "fontSize": 30,
                 "fontWeight": "400",
                 "lineHeight": 30,
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 45,
+>>>>>>> fix: fixes to text sizes
                 "paddingTop": 32,
               }
             }
@@ -62,9 +66,13 @@ exports[`renders data 1`] = `
                 "color": "#696969",
                 "fontFamily": "TimesDigital-RegularSC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 15,
 =======
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 15,
+>>>>>>> fix: fixes to text sizes
               }
             }
           >
@@ -86,10 +94,14 @@ exports[`renders data 1`] = `
                   "color": "#006699",
                   "fontFamily": "GillSansMTStd-Medium",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "fontSize": 18,
 =======
                   "fontSize": 15,
 >>>>>>> fix: adds visual fixes to author head
+=======
+                  "fontSize": 18,
+>>>>>>> fix: fixes to text sizes
                   "paddingTop": 16,
                   "textDecorationLine": "none",
                 },
@@ -108,6 +120,7 @@ exports[`renders data 1`] = `
                 "color": "#333",
                 "fontFamily": "TimesDigital-Regular",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 16,
                 "lineHeight": 26,
                 "maxWidth": "88%",
@@ -116,6 +129,11 @@ exports[`renders data 1`] = `
                 "lineHeight": 25,
                 "maxWidth": "66%",
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 16,
+                "lineHeight": 26,
+                "maxWidth": "88%",
+>>>>>>> fix: fixes to text sizes
                 "paddingBottom": 32,
                 "textAlign": "center",
               }
@@ -463,12 +481,16 @@ exports[`renders data from graphql 1`] = `
                 "color": "#000",
                 "fontFamily": "TimesModern-Bold",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 45,
 =======
                 "fontSize": 30,
                 "fontWeight": "400",
                 "lineHeight": 30,
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 45,
+>>>>>>> fix: fixes to text sizes
                 "paddingTop": 32,
               }
             }
@@ -486,9 +508,13 @@ exports[`renders data from graphql 1`] = `
                 "color": "#696969",
                 "fontFamily": "TimesDigital-RegularSC",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 15,
 =======
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 15,
+>>>>>>> fix: fixes to text sizes
               }
             }
           >
@@ -510,10 +536,14 @@ exports[`renders data from graphql 1`] = `
                   "color": "#006699",
                   "fontFamily": "GillSansMTStd-Medium",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "fontSize": 18,
 =======
                   "fontSize": 15,
 >>>>>>> fix: adds visual fixes to author head
+=======
+                  "fontSize": 18,
+>>>>>>> fix: fixes to text sizes
                   "paddingTop": 16,
                   "textDecorationLine": "none",
                 },
@@ -532,6 +562,7 @@ exports[`renders data from graphql 1`] = `
                 "color": "#333",
                 "fontFamily": "TimesDigital-Regular",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "fontSize": 16,
                 "lineHeight": 26,
                 "maxWidth": "88%",
@@ -540,6 +571,11 @@ exports[`renders data from graphql 1`] = `
                 "lineHeight": 25,
                 "maxWidth": "66%",
 >>>>>>> fix: adds visual fixes to author head
+=======
+                "fontSize": 16,
+                "lineHeight": 26,
+                "maxWidth": "88%",
+>>>>>>> fix: fixes to text sizes
                 "paddingBottom": 32,
                 "textAlign": "center",
               }
