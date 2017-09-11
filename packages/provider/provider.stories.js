@@ -46,7 +46,7 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 });
 
 const networkInterface = createNetworkInterface({
-  uri: "http://localhost:4000/graphql/"
+  uri: "https://hknmtcy3aj.execute-api.eu-west-1.amazonaws.com/prod/graphql"
 });
 
 const client = new ApolloClient({
@@ -69,7 +69,7 @@ storiesOf("Provider", module).add("AuthorProfileProvider", () => (
     <AuthorProfileWithPageState
       generatePageLink={page => `https://www.thetimes.co.uk?page=${page}`}
       imageRatio="3:2"
-      slug="fiona-hamilton"
+      slug="matt-ridley"
       page={1}
       pageSize={3}
     />
