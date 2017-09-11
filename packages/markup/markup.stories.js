@@ -9,6 +9,7 @@ import Markup, { builder } from "./markup";
 const multiParagraph = require("./fixtures/multi-paragraph.json").fixture;
 const mixture = require("./fixtures/tag-mixture.json").fixture;
 const bio = require("./fixtures/bio.json").fixture;
+const image = require("./fixtures/inline-image.json").fixture;
 
 const story = m => <View style={{ padding: 20 }}>{m}</View>;
 
@@ -16,6 +17,7 @@ storiesOf("Markup", module)
   .add("Multiple paragraphs", () => story(<Markup ast={multiParagraph} />))
   .add("Mixture of tags", () => story(<Markup ast={mixture} />))
   .add("Biography", () => story(<Markup ast={bio} wrapIn="paragraph" />))
+  .add("Image", () => story(<Markup ast={image} />))
   .add("Multiple children with styling", () =>
     story(
       <View>

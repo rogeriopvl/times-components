@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@times-components/link": "0.4.0",
+    "@times-components/image": "1.2.0",
     "prop-types": "15.5.10",
     "react-native-web": "0.0.119"
   },

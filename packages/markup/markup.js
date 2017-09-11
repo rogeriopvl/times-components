@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import Link from "@times-components/link";
+import Image from "@times-components/image";
 import Markup, { builder as mb } from "./markup-builder";
 import propTypes from "./markup-proptype";
 
