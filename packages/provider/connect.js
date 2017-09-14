@@ -34,10 +34,14 @@ const connectGraphql = (query, propsToVariables = identity) => {
       const { error, loading, ...result } = data;
 
       return children(
-        Object.assign(props, {
-          error,
-          loading
-        }, result)
+        Object.assign(
+          props,
+          {
+            error,
+            loading
+          },
+          result
+        )
       );
     }
   }

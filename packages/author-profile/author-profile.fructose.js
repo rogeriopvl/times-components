@@ -15,22 +15,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const story = m =>
+const story = m => (
   <View style={styles.background}>
     <View style={styles.container} testID="author-profile">
       {m}
     </View>
-  </View>;
+  </View>
+);
 
 const example = authorProfileGenerator(2);
 
 const props = {
-  result: Object.assign({}, example, {
-    count: example.articles.count,
-    pageSize: 10,
-    page: 1
-  }),
-  loading: false
+  slug: "fiona-hamilton",
+  imageRatio: "3:2"
 };
 
 withComponent(

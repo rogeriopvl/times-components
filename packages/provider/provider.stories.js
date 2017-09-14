@@ -57,10 +57,7 @@ storiesOf("Provider", module)
     return (
       <ApolloProvider client={client}>
         <Query>
-          {(...props) =>
-            <Text>
-              {JSON.stringify(props, null, 2)}
-            </Text>}
+          {(...props) => <Text>{JSON.stringify(props, null, 2)}</Text>}
         </Query>
       </ApolloProvider>
     );
@@ -78,16 +75,13 @@ storiesOf("Provider", module)
     return (
       <ApolloProvider client={client}>
         <Query>
-          {(...props) =>
-            <Text>
-              {JSON.stringify(props, null, 2)}
-            </Text>}
+          {(...props) => <Text>{JSON.stringify(props, null, 2)}</Text>}
         </Query>
       </ApolloProvider>
     );
   });
 
-storiesOf("Provider", module).add("AuthorProfileProvider", () =>
+storiesOf("Provider", module).add("AuthorProfileProvider", () => (
   <ApolloProvider client={client}>
     <AuthorProfileProvider
       imageRatio="3:2"
@@ -95,10 +89,7 @@ storiesOf("Provider", module).add("AuthorProfileProvider", () =>
       page={1}
       pageSize={3}
     >
-      {props =>
-        <Text>
-          {JSON.stringify(props, null, 2)}
-        </Text>}
+      {props => <Text>{JSON.stringify(props, null, 2)}</Text>}
     </AuthorProfileProvider>
   </ApolloProvider>
-);
+));

@@ -7,7 +7,6 @@ import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import AuthorProfile from "../author-profile";
 import AuthorProfileHeader from "../author-profile-header";
-import AuthorProfileItemSeparator from "../author-profile-item-separator";
 import example from "../example.json";
 
 example.articles.list = example.articles.list.map(el => ({
@@ -75,12 +74,6 @@ export default AuthorProfileContent => {
     const component = renderer.create(
       <AuthorProfileHeader {...props.result} />
     );
-
-    expect(component).toMatchSnapshot();
-  });
-
-  it("renders profile separator", () => {
-    const component = renderer.create(<AuthorProfileItemSeparator />);
 
     expect(component).toMatchSnapshot();
   });

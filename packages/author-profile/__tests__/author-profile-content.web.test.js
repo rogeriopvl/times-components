@@ -1,4 +1,4 @@
 import test from "./author-profile-helper";
-import AuthorProfileContent from "../author-profile-content.web.js";
+import AuthorProfileContent from "../author-profile.js";
 
 test(AuthorProfileContent);

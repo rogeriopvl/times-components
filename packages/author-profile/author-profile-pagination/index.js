@@ -26,29 +26,38 @@ const Query = connect(query, propsToVariables);
 
 const Component = ({ error, loading, author, ...others }) => {
   if (author) {
-    return <Pagination count={author.articles.count} {...others}/>
+    return <Pagination {...others} count={author.articles.count} />;
   }
 
   if (loading) {
-    return <Pagination count={0} {...others}/>
+    return <Pagination  {...others} count={0} />;
   }
 
   if (error) {
-    return <Text>error pagination</Text>
+    return <Text>error pagination</Text>;
   }
 
-  return <Pagination count={0} {...others}/>
-}
+  return <Pagination count={0} {...others} />;
+};
 
+Component.defaultProps = {
+  error: null,
+  author: null
+};
 
-const AuthorProfileHeader = (props) => (
+Component.propTypes = {
+  error: PropTypes.shape(),
+  loading: PropTypes.bool.isRequired,
+  author: PropTypes.shape()
+};
+
+const AuthorProfilePagination = props =>
   <Query {...props}>
     {Component}
-  </Query>
-);
+  </Query>;
 
-AuthorProfileHeader.propTypes = {
+AuthorProfilePagination.propTypes = {
   slug: PropTypes.string.isRequired
 };
 
-export default AuthorProfileHeader;
+export default AuthorProfilePagination;

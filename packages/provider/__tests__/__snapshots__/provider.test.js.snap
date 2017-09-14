@@ -8,7 +8,7 @@ exports[`renders data 1`] = `
 >
   {
     "loading": false,
-    "result": "data"
+    "data": "data"
   }
 </Text>
 `;
@@ -22,7 +22,7 @@ exports[`renders data from graphql 1`] = `
   {
     "slug": "slug-value",
     "loading": false,
-    "result": "data"
+    "data": "data"
   }
 </Text>
 `;
@@ -36,7 +36,7 @@ exports[`renders data using prop variables 1`] = `
   {
     "slug": "slug-value",
     "loading": false,
-    "result": "data"
+    "data": "data"
   }
 </Text>
 `;

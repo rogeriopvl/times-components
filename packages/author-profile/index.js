@@ -1,4 +1,4 @@
-import Provider from "./author-profile-provider";
+import { AuthorProfileProvider as Provider } from "@times-components/provider";
 import AuthorProfile from "./author-profile";
 
 export default AuthorProfile;

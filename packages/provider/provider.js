@@ -4,7 +4,4 @@ import AuthorProfileProvider from "./author-profile-provider";
 
 export default connect;
 
-export {
-  AuthorHeadProvider,
-  AuthorProfileProvider
-};
+export { AuthorHeadProvider, AuthorProfileProvider };

@@ -78,7 +78,7 @@ it("renders data from graphql", () => {
       <Query slug="slug-value">
         {props => {
           expect(props.slug).toEqual("slug-value");
-          expect(props.result).toEqual("data");
+          expect(props.data).toEqual("data");
           return (
             <Text>
               {JSON.stringify(props, null, 2)}
