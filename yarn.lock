@@ -8003,7 +8003,11 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
+<<<<<<< HEAD
 q@^1.1.2, q@^1.4.1, q@~1.5.0:
+=======
+q@^1.1.2, q@^1.4.1:
+>>>>>>> feat: adds a hoc to allow for breakpoints on stylesheets
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
@@ -10541,6 +10545,7 @@ yeast@0.1.2:
 zen-observable-ts@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.4.4.tgz#c244c71eaebef79a985ccf9895bc90307a6e9712"
+<<<<<<< HEAD
 
 zip-stream@^1.1.0:
   version "1.2.0"
@@ -10550,3 +10555,5 @@ zip-stream@^1.1.0:
     compress-commons "^1.2.0"
     lodash "^4.8.0"
     readable-stream "^2.0.0"
+=======
+>>>>>>> feat: adds a hoc to allow for breakpoints on stylesheets
