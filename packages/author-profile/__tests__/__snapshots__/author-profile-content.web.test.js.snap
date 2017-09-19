@@ -752,204 +752,189 @@ exports[`renders profile content 1`] = `
   <View>
     <View>
       <View
-        pointerEvents="box-none"
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "paddingBottom": 50,
-          }
-        }
+        onLayout={[Function]}
       >
         <View
-          accessibilityRole="banner"
+          pointerEvents="box-none"
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#F9F8F3",
-              "flexDirection": "column",
-              "paddingBottom": 50,
-              "width": "100%",
-            }
-          }
-        >
-          <Text
-            accessibilityRole="heading"
-            accessible={true}
-            allowFontScaling={true}
-            aria-level="1"
-            ellipsizeMode="tail"
-            style={
+            Array [
               Object {
-                "color": "#000",
-                "fontFamily": "TimesModern-Bold",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "fontSize": 45,
-=======
-                "fontSize": 30,
-                "fontWeight": "400",
-                "lineHeight": 30,
->>>>>>> fix: adds visual fixes to author head
-=======
-                "fontSize": 45,
->>>>>>> fix: fixes to text sizes
-                "paddingTop": 32,
-              }
-            }
-          >
-            Fiona Hamilton
-          </Text>
-          <Text
-            accessibilityRole="heading"
-            accessible={true}
-            allowFontScaling={true}
-            aria-level="2"
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#696969",
-                "fontFamily": "TimesDigital-RegularSC",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "fontSize": 15,
-=======
->>>>>>> fix: adds visual fixes to author head
-=======
-                "fontSize": 15,
->>>>>>> fix: fixes to text sizes
-              }
-            }
-          >
-            legal editor
-          </Text>
-          <Text
-            accessibilityRole="link"
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            href="https://twitter.com/jdoe"
-            onPress={[Function]}
-            style={
-              Array [
-                Object {
-                  "textDecorationLine": "underline",
-                },
-                Object {
-                  "color": "#006699",
-                  "fontFamily": "GillSansMTStd-Medium",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "fontSize": 18,
-=======
-                  "fontSize": 15,
->>>>>>> fix: adds visual fixes to author head
-=======
-                  "fontSize": 18,
->>>>>>> fix: fixes to text sizes
-                  "paddingTop": 16,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            @
-            jdoe
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#333",
-                "fontFamily": "TimesDigital-Regular",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "fontSize": 16,
-                "lineHeight": 26,
-                "maxWidth": "88%",
-=======
-                "fontSize": 15,
-                "lineHeight": 25,
-                "maxWidth": "66%",
->>>>>>> fix: adds visual fixes to author head
-=======
-                "fontSize": 16,
-                "lineHeight": 26,
-                "maxWidth": "88%",
->>>>>>> fix: fixes to text sizes
-                "paddingBottom": 32,
-                "textAlign": "center",
-              }
-            }
-          >
-            Lorem 
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontWeight": "bold",
-                }
-              }
-            >
-              ipsum
-            </Text>
-             testbr 
-            More text 
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontStyle": "italic",
-                }
-              }
-            >
-               last 
-            </Text>
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "bottom": 0,
-              "height": 100,
-              "position": "absolute",
-              "width": 100,
-            }
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "paddingBottom": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
-            onLayout={[Function]}
-          >
-            <Image
-              onError={[Function]}
-              onLoad={[Function]}
-              source={
+            accessibilityRole="banner"
+            style={
+              Array [
                 Object {
-                  "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
-                }
-              }
+                  "alignItems": "center",
+                  "backgroundColor": "#F9F8F3",
+                  "flexDirection": "column",
+                  "paddingBottom": 50,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              accessibilityRole="heading"
+              accessible={true}
+              allowFontScaling={true}
+              aria-level="1"
+              ellipsizeMode="tail"
               style={
                 Array [
                   Object {
-                    "height": 1,
-                    "width": 750,
+                    "color": "#000",
+                    "fontFamily": "TimesModern-Bold",
+                    "fontSize": 45,
+                    "paddingTop": 32,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              Fiona Hamilton
+            </Text>
+            <Text
+              accessibilityRole="heading"
+              accessible={true}
+              allowFontScaling={true}
+              aria-level="2"
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "#696969",
+                    "fontFamily": "TimesDigital-RegularSC",
+                    "fontSize": 15,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              legal editor
+            </Text>
+            <Text
+              accessibilityRole="link"
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              href="https://twitter.com/jdoe"
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "textDecorationLine": "underline",
                   },
                   Object {
-                    "borderColor": "#FFF",
-                    "borderRadius": 50,
-                    "borderWidth": 5,
-                    "height": 100,
-                    "width": 100,
+                    "color": "#006699",
+                    "fontFamily": "GillSansMTStd-Medium",
+                    "fontSize": 18,
+                    "paddingTop": 16,
+                    "textDecorationLine": "none",
                   },
                 ]
               }
-            />
+            >
+              @
+              jdoe
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#333",
+                  "fontFamily": "TimesDigital-Regular",
+                  "fontSize": 16,
+                  "lineHeight": 26,
+                  "maxWidth": "88%",
+                  "paddingBottom": 32,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Lorem 
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                ipsum
+              </Text>
+               testbr 
+              More text 
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "fontStyle": "italic",
+                  }
+                }
+              >
+                 last 
+              </Text>
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 100,
+                    "paddingBottom": 16,
+                    "paddingTop": 16,
+                    "width": 100,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <View
+                onLayout={[Function]}
+              >
+                <Image
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  source={
+                    Object {
+                      "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
+                    }
+                  }
+                  style={
+                    Array [
+                      Object {
+                        "height": 1,
+                        "width": 750,
+                      },
+                      Array [
+                        Object {
+                          "borderColor": "#FFF",
+                          "borderRadius": 50,
+                          "borderWidth": 5,
+                          "height": 100,
+                          "width": 100,
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                />
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -4059,204 +4044,189 @@ exports[`renders profile content component 1`] = `
 <View>
   <View>
     <View
-      pointerEvents="box-none"
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "paddingBottom": 50,
-        }
-      }
+      onLayout={[Function]}
     >
       <View
-        accessibilityRole="banner"
+        pointerEvents="box-none"
         style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#F9F8F3",
-            "flexDirection": "column",
-            "paddingBottom": 50,
-            "width": "100%",
-          }
-        }
-      >
-        <Text
-          accessibilityRole="heading"
-          accessible={true}
-          allowFontScaling={true}
-          aria-level="1"
-          ellipsizeMode="tail"
-          style={
+          Array [
             Object {
-              "color": "#000",
-              "fontFamily": "TimesModern-Bold",
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "fontSize": 45,
-=======
-              "fontSize": 30,
-              "fontWeight": "400",
-              "lineHeight": 30,
->>>>>>> fix: adds visual fixes to author head
-=======
-              "fontSize": 45,
->>>>>>> fix: fixes to text sizes
-              "paddingTop": 32,
-            }
-          }
-        >
-          Fiona Hamilton
-        </Text>
-        <Text
-          accessibilityRole="heading"
-          accessible={true}
-          allowFontScaling={true}
-          aria-level="2"
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#696969",
-              "fontFamily": "TimesDigital-RegularSC",
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "fontSize": 15,
-=======
->>>>>>> fix: adds visual fixes to author head
-=======
-              "fontSize": 15,
->>>>>>> fix: fixes to text sizes
-            }
-          }
-        >
-          legal editor
-        </Text>
-        <Text
-          accessibilityRole="link"
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          href="https://twitter.com/jdoe"
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "textDecorationLine": "underline",
-              },
-              Object {
-                "color": "#006699",
-                "fontFamily": "GillSansMTStd-Medium",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "fontSize": 18,
-=======
-                "fontSize": 15,
->>>>>>> fix: adds visual fixes to author head
-=======
-                "fontSize": 18,
->>>>>>> fix: fixes to text sizes
-                "paddingTop": 16,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          @
-          jdoe
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#333",
-              "fontFamily": "TimesDigital-Regular",
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "fontSize": 16,
-              "lineHeight": 26,
-              "maxWidth": "88%",
-=======
-              "fontSize": 15,
-              "lineHeight": 25,
-              "maxWidth": "66%",
->>>>>>> fix: adds visual fixes to author head
-=======
-              "fontSize": 16,
-              "lineHeight": 26,
-              "maxWidth": "88%",
->>>>>>> fix: fixes to text sizes
-              "paddingBottom": 32,
-              "textAlign": "center",
-            }
-          }
-        >
-          Lorem 
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            ipsum
-          </Text>
-           testbr 
-          More text 
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontStyle": "italic",
-              }
-            }
-          >
-             last 
-          </Text>
-        </Text>
-      </View>
-      <View
-        style={
-          Object {
-            "bottom": 0,
-            "height": 100,
-            "position": "absolute",
-            "width": 100,
-          }
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "paddingBottom": 50,
+            },
+            undefined,
+          ]
         }
       >
         <View
-          onLayout={[Function]}
-        >
-          <Image
-            onError={[Function]}
-            onLoad={[Function]}
-            source={
+          accessibilityRole="banner"
+          style={
+            Array [
               Object {
-                "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
-              }
-            }
+                "alignItems": "center",
+                "backgroundColor": "#F9F8F3",
+                "flexDirection": "column",
+                "paddingBottom": 50,
+                "width": "100%",
+              },
+              undefined,
+            ]
+          }
+        >
+          <Text
+            accessibilityRole="heading"
+            accessible={true}
+            allowFontScaling={true}
+            aria-level="1"
+            ellipsizeMode="tail"
             style={
               Array [
                 Object {
-                  "height": 1,
-                  "width": 750,
+                  "color": "#000",
+                  "fontFamily": "TimesModern-Bold",
+                  "fontSize": 45,
+                  "paddingTop": 32,
+                },
+                undefined,
+              ]
+            }
+          >
+            Fiona Hamilton
+          </Text>
+          <Text
+            accessibilityRole="heading"
+            accessible={true}
+            allowFontScaling={true}
+            aria-level="2"
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "#696969",
+                  "fontFamily": "TimesDigital-RegularSC",
+                  "fontSize": 15,
+                },
+                undefined,
+              ]
+            }
+          >
+            legal editor
+          </Text>
+          <Text
+            accessibilityRole="link"
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            href="https://twitter.com/jdoe"
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "textDecorationLine": "underline",
                 },
                 Object {
-                  "borderColor": "#FFF",
-                  "borderRadius": 50,
-                  "borderWidth": 5,
-                  "height": 100,
-                  "width": 100,
+                  "color": "#006699",
+                  "fontFamily": "GillSansMTStd-Medium",
+                  "fontSize": 18,
+                  "paddingTop": 16,
+                  "textDecorationLine": "none",
                 },
               ]
             }
-          />
+          >
+            @
+            jdoe
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#333",
+                "fontFamily": "TimesDigital-Regular",
+                "fontSize": 16,
+                "lineHeight": 26,
+                "maxWidth": "88%",
+                "paddingBottom": 32,
+                "textAlign": "center",
+              }
+            }
+          >
+            Lorem 
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              ipsum
+            </Text>
+             testbr 
+            More text 
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontStyle": "italic",
+                }
+              }
+            >
+               last 
+            </Text>
+          </Text>
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 100,
+                  "paddingBottom": 16,
+                  "paddingTop": 16,
+                  "width": 100,
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              onLayout={[Function]}
+            >
+              <Image
+                onError={[Function]}
+                onLoad={[Function]}
+                source={
+                  Object {
+                    "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 750,
+                    },
+                    Array [
+                      Object {
+                        "borderColor": "#FFF",
+                        "borderRadius": 50,
+                        "borderWidth": 5,
+                        "height": 100,
+                        "width": 100,
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              />
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -7521,204 +7491,189 @@ exports[`renders profile error 1`] = `
 exports[`renders profile header 1`] = `
 <View>
   <View
-    pointerEvents="box-none"
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "paddingBottom": 50,
-      }
-    }
+    onLayout={[Function]}
   >
     <View
-      accessibilityRole="banner"
+      pointerEvents="box-none"
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#F9F8F3",
-          "flexDirection": "column",
-          "paddingBottom": 50,
-          "width": "100%",
-        }
-      }
-    >
-      <Text
-        accessibilityRole="heading"
-        accessible={true}
-        allowFontScaling={true}
-        aria-level="1"
-        ellipsizeMode="tail"
-        style={
+        Array [
           Object {
-            "color": "#000",
-            "fontFamily": "TimesModern-Bold",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "fontSize": 45,
-=======
-            "fontSize": 30,
-            "fontWeight": "400",
-            "lineHeight": 30,
->>>>>>> fix: adds visual fixes to author head
-=======
-            "fontSize": 45,
->>>>>>> fix: fixes to text sizes
-            "paddingTop": 32,
-          }
-        }
-      >
-        Fiona Hamilton
-      </Text>
-      <Text
-        accessibilityRole="heading"
-        accessible={true}
-        allowFontScaling={true}
-        aria-level="2"
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#696969",
-            "fontFamily": "TimesDigital-RegularSC",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "fontSize": 15,
-=======
->>>>>>> fix: adds visual fixes to author head
-=======
-            "fontSize": 15,
->>>>>>> fix: fixes to text sizes
-          }
-        }
-      >
-        legal editor
-      </Text>
-      <Text
-        accessibilityRole="link"
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        href="https://twitter.com/jdoe"
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "textDecorationLine": "underline",
-            },
-            Object {
-              "color": "#006699",
-              "fontFamily": "GillSansMTStd-Medium",
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "fontSize": 18,
-=======
-              "fontSize": 15,
->>>>>>> fix: adds visual fixes to author head
-=======
-              "fontSize": 18,
->>>>>>> fix: fixes to text sizes
-              "paddingTop": 16,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        @
-        jdoe
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#333",
-            "fontFamily": "TimesDigital-Regular",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "fontSize": 16,
-            "lineHeight": 26,
-            "maxWidth": "88%",
-=======
-            "fontSize": 15,
-            "lineHeight": 25,
-            "maxWidth": "66%",
->>>>>>> fix: adds visual fixes to author head
-=======
-            "fontSize": 16,
-            "lineHeight": 26,
-            "maxWidth": "88%",
->>>>>>> fix: fixes to text sizes
-            "paddingBottom": 32,
-            "textAlign": "center",
-          }
-        }
-      >
-        Lorem 
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-        >
-          ipsum
-        </Text>
-         testbr 
-        More text 
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "fontStyle": "italic",
-            }
-          }
-        >
-           last 
-        </Text>
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "bottom": 0,
-          "height": 100,
-          "position": "absolute",
-          "width": 100,
-        }
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "paddingBottom": 50,
+          },
+          undefined,
+        ]
       }
     >
       <View
-        onLayout={[Function]}
-      >
-        <Image
-          onError={[Function]}
-          onLoad={[Function]}
-          source={
+        accessibilityRole="banner"
+        style={
+          Array [
             Object {
-              "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
-            }
-          }
+              "alignItems": "center",
+              "backgroundColor": "#F9F8F3",
+              "flexDirection": "column",
+              "paddingBottom": 50,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessibilityRole="heading"
+          accessible={true}
+          allowFontScaling={true}
+          aria-level="1"
+          ellipsizeMode="tail"
           style={
             Array [
               Object {
-                "height": 1,
-                "width": 750,
+                "color": "#000",
+                "fontFamily": "TimesModern-Bold",
+                "fontSize": 45,
+                "paddingTop": 32,
+              },
+              undefined,
+            ]
+          }
+        >
+          Fiona Hamilton
+        </Text>
+        <Text
+          accessibilityRole="heading"
+          accessible={true}
+          allowFontScaling={true}
+          aria-level="2"
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "#696969",
+                "fontFamily": "TimesDigital-RegularSC",
+                "fontSize": 15,
+              },
+              undefined,
+            ]
+          }
+        >
+          legal editor
+        </Text>
+        <Text
+          accessibilityRole="link"
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          href="https://twitter.com/jdoe"
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "textDecorationLine": "underline",
               },
               Object {
-                "borderColor": "#FFF",
-                "borderRadius": 50,
-                "borderWidth": 5,
-                "height": 100,
-                "width": 100,
+                "color": "#006699",
+                "fontFamily": "GillSansMTStd-Medium",
+                "fontSize": 18,
+                "paddingTop": 16,
+                "textDecorationLine": "none",
               },
             ]
           }
-        />
+        >
+          @
+          jdoe
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#333",
+              "fontFamily": "TimesDigital-Regular",
+              "fontSize": 16,
+              "lineHeight": 26,
+              "maxWidth": "88%",
+              "paddingBottom": 32,
+              "textAlign": "center",
+            }
+          }
+        >
+          Lorem 
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            ipsum
+          </Text>
+           testbr 
+          More text 
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+             last 
+          </Text>
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 100,
+                "paddingBottom": 16,
+                "paddingTop": 16,
+                "width": 100,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            onLayout={[Function]}
+          >
+            <Image
+              onError={[Function]}
+              onLoad={[Function]}
+              source={
+                Object {
+                  "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 1,
+                    "width": 750,
+                  },
+                  Array [
+                    Object {
+                      "borderColor": "#FFF",
+                      "borderRadius": 50,
+                      "borderWidth": 5,
+                      "height": 100,
+                      "width": 100,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            />
+          </View>
+        </View>
       </View>
     </View>
   </View>
