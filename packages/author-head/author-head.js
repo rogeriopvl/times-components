@@ -100,15 +100,6 @@ const ResponsiveStyles = {
       photoContainer: {
         ...Platform.select({
           web: {
-            display: "none"
-          }
-        })
-      }
-    }),
-    [Breakpoints.LARGE]: StyleSheet.create({
-      photoContainer: {
-        ...Platform.select({
-          web: {
             order: 6
           }
         }),
