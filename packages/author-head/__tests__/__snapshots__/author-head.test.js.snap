@@ -2,120 +2,136 @@
 
 exports[`renders a snapshot 1`] = `
 <View
-  pointerEvents="box-none"
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "transparent",
-      "paddingBottom": 50,
-    }
-  }
+  onLayout={[Function]}
 >
   <View
-    accessibilityRole="banner"
+    pointerEvents="box-none"
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#F9F8F3",
-        "flexDirection": "column",
-        "paddingBottom": 50,
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "paddingBottom": 50,
+        },
+        undefined,
+      ]
     }
   >
-    <Text
-      accessibilityRole="heading"
-      accessible={true}
-      allowFontScaling={true}
-      aria-level="1"
-      ellipsizeMode="tail"
+    <View
+      accessibilityRole="banner"
       style={
-        Object {
-          "color": "#000",
-          "fontFamily": "TimesModern-Bold",
-          "fontSize": 45,
-          "paddingTop": 32,
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#F9F8F3",
+            "flexDirection": "column",
+            "paddingBottom": 50,
+            "width": "100%",
+          },
+          undefined,
+        ]
       }
     >
-      
-    </Text>
-    <Text
-      accessibilityRole="heading"
-      accessible={true}
-      allowFontScaling={true}
-      aria-level="2"
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#696969",
-          "fontFamily": "TimesDigital-RegularSC",
-          "fontSize": 15,
+      <Text
+        accessibilityRole="heading"
+        accessible={true}
+        allowFontScaling={true}
+        aria-level="1"
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "TimesModern-Bold",
+              "fontSize": 45,
+              "paddingTop": 32,
+            },
+            undefined,
+          ]
         }
-      }
-    >
-      
-    </Text>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#333",
-          "fontFamily": "TimesDigital-Regular",
-          "fontSize": 16,
-          "lineHeight": 26,
-          "maxWidth": "88%",
-          "paddingBottom": 32,
-          "textAlign": "center",
+      >
+        
+      </Text>
+      <Text
+        accessibilityRole="heading"
+        accessible={true}
+        allowFontScaling={true}
+        aria-level="2"
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#696969",
+              "fontFamily": "TimesDigital-RegularSC",
+              "fontSize": 15,
+            },
+            undefined,
+          ]
         }
-      }
-    >
+      >
+        
+      </Text>
       <Text
         accessible={true}
         allowFontScaling={true}
         ellipsizeMode="tail"
-      />
-    </Text>
-  </View>
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "height": 100,
-        "position": "absolute",
-        "width": 100,
-      }
-    }
-  >
-    <View
-      onLayout={[Function]}
-    >
-      <Image
-        onError={[Function]}
-        onLoad={[Function]}
-        source={
+        style={
           Object {
-            "uri": "",
+            "color": "#333",
+            "fontFamily": "TimesDigital-Regular",
+            "fontSize": 16,
+            "lineHeight": 26,
+            "maxWidth": "88%",
+            "paddingBottom": 32,
+            "textAlign": "center",
           }
         }
+      />
+      <View
         style={
           Array [
             Object {
-              "height": 1,
-              "width": 750,
-            },
-            Object {
-              "borderColor": "#FFF",
-              "borderRadius": 50,
-              "borderWidth": 5,
               "height": 100,
+              "paddingBottom": 16,
+              "paddingTop": 16,
               "width": 100,
             },
+            undefined,
           ]
         }
-      />
+      >
+        <View
+          onLayout={[Function]}
+        >
+          <Image
+            onError={[Function]}
+            onLoad={[Function]}
+            source={
+              Object {
+                "uri": "",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 1,
+                  "width": 750,
+                },
+                Array [
+                  Object {
+                    "borderColor": "#FFF",
+                    "borderRadius": 50,
+                    "borderWidth": 5,
+                    "height": 100,
+                    "width": 100,
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
     </View>
   </View>
 </View>
@@ -123,105 +139,115 @@ exports[`renders a snapshot 1`] = `
 
 exports[`renders a snapshot with data 1`] = `
 <View
-  pointerEvents="box-none"
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "transparent",
-      "paddingBottom": 50,
-    }
-  }
+  onLayout={[Function]}
 >
   <View
-    accessibilityRole="banner"
+    pointerEvents="box-none"
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#F9F8F3",
-        "flexDirection": "column",
-        "paddingBottom": 50,
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "paddingBottom": 50,
+        },
+        undefined,
+      ]
     }
   >
-    <Text
-      accessibilityRole="heading"
-      accessible={true}
-      allowFontScaling={true}
-      aria-level="1"
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#000",
-          "fontFamily": "TimesModern-Bold",
-          "fontSize": 45,
-          "paddingTop": 32,
-        }
-      }
-    >
-      Carol Midgley
-    </Text>
-    <Text
-      accessibilityRole="heading"
-      accessible={true}
-      allowFontScaling={true}
-      aria-level="2"
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#696969",
-          "fontFamily": "TimesDigital-RegularSC",
-          "fontSize": 15,
-        }
-      }
-    >
-      columnist
-    </Text>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      onPress={[Function]}
+    <View
+      accessibilityRole="banner"
       style={
         Array [
           Object {
-            "color": "#069",
-            "textDecorationLine": "underline",
+            "alignItems": "center",
+            "backgroundColor": "#F9F8F3",
+            "flexDirection": "column",
+            "paddingBottom": 50,
+            "width": "100%",
           },
-          Object {
-            "color": "#006699",
-            "fontFamily": "GillSansMTStd-Medium",
-            "fontSize": 18,
-            "paddingTop": 16,
-            "textDecorationLine": "none",
-          },
+          undefined,
         ]
       }
-      url="https://twitter.com/carolmidgley"
     >
-      @
-      carolmidgley
-    </Text>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#333",
-          "fontFamily": "TimesDigital-Regular",
-          "fontSize": 16,
-          "lineHeight": 26,
-          "maxWidth": "88%",
-          "paddingBottom": 32,
-          "textAlign": "center",
+      <Text
+        accessibilityRole="heading"
+        accessible={true}
+        allowFontScaling={true}
+        aria-level="1"
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "TimesModern-Bold",
+              "fontSize": 45,
+              "paddingTop": 32,
+            },
+            undefined,
+          ]
         }
-      }
-    >
+      >
+        Carol Midgley
+      </Text>
+      <Text
+        accessibilityRole="heading"
+        accessible={true}
+        allowFontScaling={true}
+        aria-level="2"
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#696969",
+              "fontFamily": "TimesDigital-RegularSC",
+              "fontSize": 15,
+            },
+            undefined,
+          ]
+        }
+      >
+        columnist
+      </Text>
+      <Text
+        accessibilityRole="link"
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        href="https://twitter.com/carolmidgley"
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "textDecorationLine": "underline",
+            },
+            Object {
+              "color": "#006699",
+              "fontFamily": "GillSansMTStd-Medium",
+              "fontSize": 18,
+              "paddingTop": 16,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        @
+        carolmidgley
+      </Text>
       <Text
         accessible={true}
         allowFontScaling={true}
         ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#333",
+            "fontFamily": "TimesDigital-Regular",
+            "fontSize": 16,
+            "lineHeight": 26,
+            "maxWidth": "88%",
+            "paddingBottom": 32,
+            "textAlign": "center",
+          }
+        }
       >
         Carol Midgley joined 
         <Text
@@ -251,45 +277,51 @@ exports[`renders a snapshot with data 1`] = `
         </Text>
          each week and a weekly comment piece on Fridays.
       </Text>
-    </Text>
-  </View>
-  <View
-    style={
-      Object {
-        "bottom": 0,
-        "height": 100,
-        "position": "absolute",
-        "width": 100,
-      }
-    }
-  >
-    <View
-      onLayout={[Function]}
-    >
-      <Image
-        onError={[Function]}
-        onLoad={[Function]}
-        source={
-          Object {
-            "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
-          }
-        }
+      <View
         style={
           Array [
             Object {
-              "height": 1,
-              "width": 750,
-            },
-            Object {
-              "borderColor": "#FFF",
-              "borderRadius": 50,
-              "borderWidth": 5,
               "height": 100,
+              "paddingBottom": 16,
+              "paddingTop": 16,
               "width": 100,
             },
+            undefined,
           ]
         }
-      />
+      >
+        <View
+          onLayout={[Function]}
+        >
+          <Image
+            onError={[Function]}
+            onLoad={[Function]}
+            source={
+              Object {
+                "uri": "https://feeds.thetimes.co.uk/web/imageserver/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F0694e84e-04ff-11e7-976a-0b4b9a1a67a3.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 1,
+                  "width": 750,
+                },
+                Array [
+                  Object {
+                    "borderColor": "#FFF",
+                    "borderRadius": 50,
+                    "borderWidth": 5,
+                    "height": 100,
+                    "width": 100,
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
     </View>
   </View>
 </View>
