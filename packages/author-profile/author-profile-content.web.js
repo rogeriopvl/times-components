@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
+import _round from "lodash.round";
+import { addTracking } from "@times-components/tracking";
 import AuthorProfileHeader, {
   AuthorProfileHeaderWithTracking
 } from "./author-profile-header";
@@ -44,8 +46,18 @@ const makeAuthorProfileContent = Header => {
   return AuthorProfile;
 };
 
-export const AuthorProfileContentWithTracking = makeAuthorProfileContent(
-  AuthorProfileHeaderWithTracking
+export const AuthorProfileContentWithTracking = addTracking(
+  makeAuthorProfileContent(AuthorProfileHeaderWithTracking),
+  {
+    trackChildViews: {
+      id: "id",
+      attrs: {
+        index: props => props.index,
+        progress: props => _round((props.index + 1) / props.total * 100, 2)
+      },
+      listPath: "articles.list"
+    }
+  }
 );
 
 export default makeAuthorProfileContent(AuthorProfileHeader);

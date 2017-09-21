@@ -4,7 +4,8 @@ import _get from "lodash.get";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import resolveAttrs from "./resolve-attrs";
 import getDisplayName from "./get-display-name";
-import { addTracking, trackingContextTypes } from "./tracking";
+import { trackingContextTypes } from "./base-tracking";
+import { addTracking } from "./tracking";
 
 const addTrackingContext = (WrappedComponent, { attrs = {} } = {}) => {
   class WithTrackingContext extends Component {
