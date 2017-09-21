@@ -7,7 +7,12 @@ import getDisplayName from "./get-display-name";
 import { trackingContextTypes } from "./base-tracking";
 import { addTracking } from "./tracking";
 
-const addTrackingContext = (WrappedComponent, { attrs = {} } = {}) => {
+const addTrackingContext = (
+  WrappedComponent,
+  { attrs = {}, trackingName } = {}
+) => {
+  const componentName = getDisplayName(WrappedComponent, trackingName);
+
   class WithTrackingContext extends Component {
     getChildContext() {
       const self = this;
@@ -27,6 +32,7 @@ const addTrackingContext = (WrappedComponent, { attrs = {} } = {}) => {
             self.analyticsStream({
               object: e.object,
               action: e.action,
+              ancestors: [componentName, ...(e.ancestors || [])],
               attrs: trackingAttrs
             });
           }
@@ -56,9 +62,7 @@ const addTrackingContext = (WrappedComponent, { attrs = {} } = {}) => {
     }
   }
 
-  WithTrackingContext.displayName = `WithTrackingContext(${getDisplayName(
-    WrappedComponent
-  )})`;
+  WithTrackingContext.displayName = `WithTrackingContext(${componentName})`;
 
   hoistNonReactStatic(WithTrackingContext, WrappedComponent);
 

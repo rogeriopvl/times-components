@@ -4,6 +4,7 @@ import _flow from "lodash.flow";
 const flattenEvent = e => ({
   object: e.object,
   action: e.action,
+  ancestors: e.ancestors,
   ...e.attrs
 });
 
