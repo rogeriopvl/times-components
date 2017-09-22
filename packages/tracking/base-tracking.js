@@ -86,7 +86,8 @@ export const makeTracking = (
         }
 
         const funcWrapped = (...args) => {
-          tracking(resolveAttrs(attrs, this.props), funcName);
+          const resolvedAttrs = resolveAttrs(attrs, this.props, args);
+          tracking(resolvedAttrs, funcName);
           return this.props[funcName] && this.props[funcName](...args);
         };
 
