@@ -10,6 +10,8 @@ export const trackingContextTypes = {
   })
 };
 
+const getActionName = eventName => eventName.replace(/^on/, "");
+
 export const makeTracking = (
   WrappedComponent,
   {
@@ -65,11 +67,8 @@ export const makeTracking = (
           this.context.tracking &&
           this.context.tracking.analytics({
             object: componentName,
-            action: "Action",
-            attrs: {
-              actionName,
-              ...resolvedAttrs
-            }
+            action: getActionName(actionName),
+            attrs: resolvedAttrs
           })
       );
     }
