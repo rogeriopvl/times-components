@@ -80,12 +80,12 @@ storiesOf("AuthorProfile", module)
     const AuthProfileWithPageStateAndTracking = addTrackingContext(
       withPageState(AuthorProfileWithTracking),
       {
-        attrs: {
-          pageName: targetProps => `profile:${targetProps.data.name}`,
-          name: targetProps => targetProps.data.name,
+        getAttrs: targetProps => ({
+          pageName: `profile:${targetProps.data.name}`,
+          name: targetProps.data.name,
           siteArea: "profile",
           pageType: "listing"
-        }
+        })
       }
     );
 

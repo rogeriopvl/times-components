@@ -17,7 +17,7 @@ export const makeTracking = (
   {
     analyticsEvents = [],
     trackingName,
-    attrs = {},
+    getAttrs = () => ({}),
     trackView,
     trackChildViews = {}
   } = {}
@@ -42,9 +42,7 @@ export const makeTracking = (
         this.context.tracking.analytics({
           object: componentName,
           action: "Rendered",
-          attrs: {
-            ...resolveAttrs(attrs, this.props)
-          }
+          attrs: resolveAttrs(getAttrs, this.props)
         });
       }
     }
@@ -55,7 +53,7 @@ export const makeTracking = (
         action: "Viewed",
         attrs: {
           id,
-          ...resolveAttrs(trackChildViews.attrs, childProps)
+          ...resolveAttrs(trackChildViews.getAttrs, childProps)
         }
       });
     }
@@ -63,12 +61,12 @@ export const makeTracking = (
     getWrappedAnalyticsEvents() {
       return this.wrapWithTracking(
         analyticsEvents,
-        (resolvedAttrs, actionName) =>
+        (attrs, actionName) =>
           this.context.tracking &&
           this.context.tracking.analytics({
             object: componentName,
             action: getActionName(actionName),
-            attrs: resolvedAttrs
+            attrs
           })
       );
     }
@@ -85,8 +83,8 @@ export const makeTracking = (
         }
 
         const funcWrapped = (...args) => {
-          const resolvedAttrs = resolveAttrs(attrs, this.props, args);
-          tracking(resolvedAttrs, funcName);
+          const attrs = resolveAttrs(getAttrs, this.props, args);
+          tracking(attrs, funcName);
           return this.props[funcName] && this.props[funcName](...args);
         };
 

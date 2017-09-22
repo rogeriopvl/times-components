@@ -72,11 +72,11 @@ export const AuthorProfileContentWithTracking = addTracking(
   {
     trackChildViews: {
       id: "id",
-      attrs: {
-        index: props => props.index,
-        progress: props => _round((props.index + 1) / props.total * 100, 2)
-      },
-      listPath: "articles.list"
+      listPath: "articles.list",
+      getAttrs: props => ({
+        index: props.index,
+        scrollDepth: _round((props.index + 1) / props.total * 100, 2)
+      })
     }
   }
 );

@@ -171,11 +171,11 @@ Pagination.defaultProps = {
 
 export const PaginationWithTracking = addTracking(Pagination, {
   analyticsEvents: ["onNext", "onPrev"],
-  attrs: {
+  getAttrs: targetProps => ({
     intention: "navigation",
-    page: targetProps => targetProps.page,
-    perPage: targetProps => targetProps.pageSize
-  }
+    page: targetProps.page,
+    perPage: targetProps.pageSize
+  })
 });
 
 export default Pagination;

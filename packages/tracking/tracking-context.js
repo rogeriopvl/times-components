@@ -9,7 +9,7 @@ import { addTracking } from "./tracking";
 
 const addTrackingContext = (
   WrappedComponent,
-  { attrs = {}, trackingName } = {}
+  { getAttrs = () => ({}), trackingName } = {}
 ) => {
   const componentName = getDisplayName(WrappedComponent, trackingName);
 
@@ -20,20 +20,20 @@ const addTrackingContext = (
       return {
         tracking: {
           analytics(e) {
-            const trackingAttrs = {
-              ...resolveAttrs(attrs, self.props),
+            const attrs = {
+              ...resolveAttrs(getAttrs, self.props),
               ...e.attrs
             };
 
             if (self.isRootTrackingContext()) {
-              trackingAttrs.eventDate = new Date().toISOString();
+              attrs.eventDate = new Date().toISOString();
             }
 
             self.analyticsStream({
               object: e.object,
               action: e.action,
               ancestors: [componentName, ...(e.ancestors || [])],
-              attrs: trackingAttrs
+              attrs
             });
           }
         }

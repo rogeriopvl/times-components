@@ -15,7 +15,7 @@ export const addTracking = (
   {
     analyticsEvents = [],
     trackingName,
-    attrs = {},
+    getAttrs = () => ({}),
     trackView,
     trackChildViews = {}
   } = {}
@@ -23,7 +23,7 @@ export const addTracking = (
   class WithTracking extends makeTracking(WrappedComponent, {
     analyticsEvents,
     trackingName,
-    attrs,
+    getAttrs,
     trackView,
     trackChildViews
   }) {
