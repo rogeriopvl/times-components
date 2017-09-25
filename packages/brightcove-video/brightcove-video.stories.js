@@ -324,7 +324,7 @@ storiesOf("BrightcoveVideo", module)
       autoplay
     />
   ))
-  .add("Player with autoplay & event listner", () => (
+  .add("Player with autoplay & event listener", () => (
     <Player
       policyKey={policyKey}
       videoId={videoId}
@@ -335,5 +335,14 @@ storiesOf("BrightcoveVideo", module)
       onFinish={action("finish")}
       onDuration={action("duration")}
       autoplay
+    />
+  ))
+  .add("Launcher with fullscreen listeners", () => (
+    <BrightcoveVideo
+      policyKey={policyKey}
+      videoId={videoId}
+      accountId={accountId}
+      onEnterFullscreen={action("entering fullscreen")}
+      onExitFullscreen={action("exiting fullscreen")}
     />
   ));

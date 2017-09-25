@@ -18,6 +18,7 @@ class BrightcoveVideo extends Component {
     this.on("seeked", context.onSeeked.bind(context, this));
     this.on("timeupdate", context.onPlay.bind(context, this));
     this.on("durationchange", context.onDurationChange.bind(context, this));
+    this.on("fullscreenchange", context.onFullscreenChange.bind(context, this));
 
     this.contextmenu({ disabled: true });
   }
@@ -59,7 +60,7 @@ class BrightcoveVideo extends Component {
       errors: [].concat(BrightcoveVideo.globalErrors),
       isPlaying: "paused",
       isFinished: false,
-      fullscreen: false,
+      isFullscreen: false,
       progress: 0
     };
   }
@@ -100,6 +101,8 @@ class BrightcoveVideo extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
+    console.log("componentWillUpdate", nextState);
+
     const playerStatusChanged = this.state.isPlaying !== nextState.isPlaying;
 
     if (this.state.duration !== nextState.duration) {
@@ -125,8 +128,8 @@ class BrightcoveVideo extends Component {
       this.props.onFinish();
     }
 
-    if (this.state.fullscreen !== nextState.fullscreen) {
-      if (nextState.fullscreen) {
+    if (this.state.isFullscreen !== nextState.isFullscreen) {
+      if (nextState.isFullscreen) {
         this.props.onEnterFullscreen();
       } else {
         this.props.onExitFullscreen();
@@ -176,7 +179,7 @@ class BrightcoveVideo extends Component {
   }
 
   onFullscreenChange() {
-    this.setState({ fullscreen: BrightcoveVideo.isFullscreen() });
+    this.setState({ isFullscreen: BrightcoveVideo.isFullscreen() });
   }
 
   setPlayer(player) {

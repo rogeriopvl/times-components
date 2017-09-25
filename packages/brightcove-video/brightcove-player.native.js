@@ -87,6 +87,14 @@ class BrightcoveVideo extends Component {
       this.props.onFinish();
     }
 
+    if (newState.fullscreen !== this.state.fullscreen) {
+      if (newState.fullscreen) {
+        this.props.onEnterFullscreen();
+      } else {
+        this.props.onExitFullscreen();
+      }
+    }
+
     this.setState(newState);
   }
 
