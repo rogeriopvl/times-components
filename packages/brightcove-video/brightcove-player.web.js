@@ -38,6 +38,15 @@ class BrightcoveVideo extends Component {
     return Math.round(player.duration() * 1000);
   }
 
+  static isFullscreen() {
+    return !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullScreenElement
+    );
+  }
+
   constructor(props) {
     super(props);
 
@@ -116,6 +125,14 @@ class BrightcoveVideo extends Component {
       this.props.onFinish();
     }
 
+    if (this.state.fullscreen !== nextState.fullscreen) {
+      if (nextState.fullscreen) {
+        this.props.onEnterFullscreen();
+      } else {
+        this.props.onExitFullscreen();
+      }
+    }
+
     return this.props !== nextProps;
   }
 
@@ -156,6 +173,10 @@ class BrightcoveVideo extends Component {
 
   onDurationChange(player) {
     this.setState({ duration: BrightcoveVideo.getDurationMs(player) });
+  }
+
+  onFullscreenChange() {
+    this.setState({ fullscreen: BrightcoveVideo.isFullscreen() });
   }
 
   setPlayer(player) {

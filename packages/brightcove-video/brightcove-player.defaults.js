@@ -8,6 +8,8 @@ export default {
   onFinish: () => {},
   onProgress: () => {},
   onDuration: () => {},
+  onEnterFullscreen: () => {},
+  onExitFullscreen: () => {},
   autoplay: false,
   hideFullScreenButton: false
 };

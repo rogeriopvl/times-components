@@ -62,6 +62,8 @@ Properties types are defined in `./brightcove-video.proptypes.js`
 | `height` | number | height of the player
 | `onError` | function | Handle errors
 | `onChange` | function |
+| `onEnterFullscreen` | function | handles video entering fullscreen
+| `onExitFullscreen` | function | handles video exiting fullscreen
 | `autoplay` | boolean | Should the video autoplay
 | `hideFullScreenButton` | boolean | Should the full screen button be hidden
 

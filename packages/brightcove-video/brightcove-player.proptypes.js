@@ -18,6 +18,8 @@ export default {
   onFinish: PropTypes.func,
   onProgress: PropTypes.func,
   onDuration: PropTypes.func,
+  onEnterFullscreen: PropTypes.func,
+  onExitFullscreen: PropTypes.func,
   autoplay: PropTypes.bool,
   hideFullScreenButton: PropTypes.bool
 };
