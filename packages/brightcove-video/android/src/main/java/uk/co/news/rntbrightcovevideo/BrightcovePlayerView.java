@@ -22,6 +22,7 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
 
     private Boolean mAutoplay;
     private Boolean mIsPlaying = false;
+    private Boolean mIsFullscreen = null;
     private float mProgress = 0;
 
     public BrightcovePlayerView(final Context context) {
@@ -43,16 +44,28 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
         eventEmitter.on(EventType.PLAY, onEvent(true));
         eventEmitter.on(EventType.PAUSE, onEvent(false));
         eventEmitter.on(EventType.PROGRESS, onEvent(true));
+        eventEmitter.on(EventType.DID_ENTER_FULL_SCREEN, new EventListener() {
+            @Override
+            public void processEvent(Event e) {
+                playerView.bubbleState(playerView.getIsPlaying(), (int) playerView.getPlayheadPosition(), true);
+            }
+        });
+        eventEmitter.on(EventType.DID_EXIT_FULL_SCREEN, new EventListener() {
+            @Override
+            public void processEvent(Event e) {
+                playerView.bubbleState(playerView.getIsPlaying(), (int) playerView.getPlayheadPosition(), false);
+            }
+        });
         eventEmitter.on(EventType.COMPLETED, new EventListener() {
             @Override
             public void processEvent(Event e) {
-                playerView.bubbleState(false, playerView.getDuration());
+                playerView.bubbleState(false, playerView.getDuration(), playerView.getIsFullscreen());
             }
         });
         eventEmitter.on(EventType.SEEK_TO, new EventListener() {
             @Override
             public void processEvent(Event e) {
-                playerView.bubbleState(playerView.getIsPlaying(), (int) playerView.getPlayheadPosition());
+                playerView.bubbleState(playerView.getIsPlaying(), (int) playerView.getPlayheadPosition(), playerView.getIsFullscreen());
             }
         });
         eventEmitter.on(EventType.ERROR, new EventListener() {
@@ -64,9 +77,21 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
         return eventEmitter;
     }
 
-    private void bubbleState(Boolean isPlaying, int headPos) {
+    private EventListener onEvent(final Boolean isPlaying) {
+        final BrightcovePlayerView playerView = BrightcovePlayerView.this;
+
+        return new EventListener() {
+            @Override
+            public void processEvent(Event event) {
+                playerView.bubbleState(isPlaying, (int) playerView.getPlayheadPosition(), playerView.getIsFullscreen());
+            }
+        };
+    }
+
+    private void bubbleState(Boolean isPlaying, int headPos, Boolean isFullscreen) {
         mIsPlaying = isPlaying;
-        ((RNTBrightcoveView) this.getParent()).emitState(mIsPlaying, headPos);
+        mIsFullscreen = isFullscreen;
+        ((RNTBrightcoveView) this.getParent()).emitState(isPlaying, headPos, isFullscreen);
     }
 
     public void initVideo(String videoId, String accountId, String policyKey, Boolean autoplay, Boolean isFullscreenButtonHidden) {
@@ -79,17 +104,6 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
 
             Catalog catalog = new Catalog(eventEmitter, accountId, policyKey);
             catalog.findVideoByID(videoId, createVideoListener());
-    }
-
-    private EventListener onEvent(final Boolean isPlaying) {
-        final BrightcovePlayerView playerView = BrightcovePlayerView.this;
-
-        return new EventListener() {
-            @Override
-            public void processEvent(Event event) {
-                playerView.bubbleState(isPlaying, (int) playerView.getPlayheadPosition());
-            }
-        };
     }
 
     @NonNull
@@ -142,6 +156,8 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
     public Boolean getIsPlaying() {
         return mIsPlaying;
     }
+
+    private Boolean getIsFullscreen() { return mIsFullscreen; }
 
     public float getPlayheadPosition() {
         return playheadPosition;

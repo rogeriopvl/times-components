@@ -109,7 +109,7 @@ public class RNTBrightcoveView extends RelativeLayout {
         }
     }
 
-    public void emitState(final Boolean isPlaying, final int progress) {
+    public void emitState(final Boolean isPlaying, final int progress, final Boolean isFullscreen) {
         WritableMap event = Arguments.createMap();
 
         if (isPlaying != null) {
@@ -117,6 +117,7 @@ public class RNTBrightcoveView extends RelativeLayout {
 
             event.putBoolean("isPlaying", isPlaying);
             event.putDouble("progress", progress);
+            event.putBoolean("isFullscreen", isFullscreen);
 
             if (duration > 0) {
                 event.putDouble("duration", duration);

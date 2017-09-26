@@ -58,36 +58,49 @@ class BrightcoveVideo extends Component {
   }
 
   handleChange(evt) {
-    const newState = {
+    const nextState = {
       isPlaying: evt.nativeEvent.isPlaying,
       duration: evt.nativeEvent.duration,
       progress: evt.nativeEvent.progress,
-      isFinished: evt.nativeEvent.isFinished
+      isFinished: evt.nativeEvent.isFinished,
+      isFullscreen: evt.nativeEvent.isFullscreen
     };
 
-    const playerStatusChanged = newState.isPlaying !== this.state.isPlaying;
+    const playingStatusChanged = this.state.isPlaying !== nextState.isPlaying;
+    const fullscreenStatusChanged =
+      this.state.isFullscreen !== nextState.isFullscreen;
+    const willFinish =
+      this.state.isFinished !== nextState.isFinished && nextState.isFinished;
 
-    if (newState.duration !== this.state.duration) {
-      this.props.onDuration(newState.duration);
+    if (playingStatusChanged) {
+      if (nextState.isPlaying) {
+        this.props.onPlay();
+      } else {
+        this.props.onPause();
+      }
     }
 
-    if (playerStatusChanged && newState.isPlaying) {
-      this.props.onPlay();
+    if (fullscreenStatusChanged) {
+      if (nextState.isFullscreen) {
+        this.props.onEnterFullscreen();
+      } else {
+        this.props.onExitFullscreen();
+      }
     }
 
-    if (newState.progress !== this.state.progress) {
-      this.props.onProgress(newState.progress);
+    if (this.state.duration !== nextState.duration) {
+      this.props.onDuration(nextState.duration);
     }
 
-    if (playerStatusChanged && !newState.isPlaying) {
-      this.props.onPause();
+    if (this.state.progress !== nextState.progress) {
+      this.props.onProgress(nextState.progress);
     }
 
-    if (newState.isFinished !== this.state.isFinished && newState.isFinished) {
+    if (willFinish) {
       this.props.onFinish();
     }
 
-    this.setState(newState);
+    this.setState(nextState);
   }
 
   handleAppStateChange(nextAppState) {
