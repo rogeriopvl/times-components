@@ -1,17 +1,24 @@
 {
-  "name": "@times-components/article",
-  "version": "0.7.3",
-  "description": "The article",
-  "main": "article",
+  "name": "@times-components/article-image",
+  "version": "0.0.1",
+  "description": "Article Image",
+  "main": "article-image",
   "scripts": {
     "flow": "node_modules/flow-bin/cli.js",
-    "test:watch": "npm run test:native -- --bail --verbose --watchAll",
-    "test:native": "jest --config='./jest.config.json'",
-    "test:web": "jest --config='./jest.config.web.json'",
-    "test":
-      "npm run test:native -- --ci --bail && npm run test:web -- --ci --bail --coverage",
+    "test:watch": "jest --bail --verbose --watchAll",
+    "test": "jest --bail --ci --coverage",
     "prettier:diff": "prettier --list-different '**/*.js'",
     "lint": "eslint . && npm run prettier:diff"
+  },
+  "jest": {
+    "preset": "react-native",
+    "rootDir": "../../",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@times-components)/"
+    ],
+    "testMatch": [
+      "<rootDir>/packages/article-image/**.test.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -22,7 +29,7 @@
     "react",
     "native",
     "web",
-    "article",
+    "article-image",
     "component"
   ],
   "license": "BSD-3-Clause",
@@ -45,7 +52,6 @@
     "eslint-plugin-react": "7.1.0",
     "flow-bin": "0.42.0",
     "jest": "20.0.4",
-    "prettier": "1.7.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-native": "0.42.3",
@@ -53,24 +59,15 @@
     "webpack": "3.3.0"
   },
   "dependencies": {
-    "@times-components/article-byline": "0.5.6",
-    "@times-components/article-flag": "0.6.2",
-    "@times-components/article-headline": "0.6.0",
-    "@times-components/article-label": "0.3.1",
-    "@times-components/article-image": "0.0.1",
-    "@times-components/date-publication": "0.3.1",
+    "@times-components/caption": "0.5.1",
     "@times-components/image": "1.4.1",
-    "@times-components/markup": "0.7.3",
     "prop-types": "15.5.10",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-native": "0.42.3",
     "react-native-web": "0.0.119"
   },
   "peerDependencies": {
-    "react": "15.4.x",
-    "react-dom": "15.4.x",
-    "react-native": "0.42.x"
+    "react": ">=15",
+    "react-dom": ">=15",
+    "react-native": ">=0.42"
   },
   "publishConfig": {
     "access": "public"
