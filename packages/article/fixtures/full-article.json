@@ -87,7 +87,7 @@
           "attributes": {
             "display": "primary",
             "ratio": "16:9",
-            "url": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8c029716-97a2-11e7-8c3c-cb45202c3d59.jpg?crop=160%2C90%2C-0%2C-0",
+            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
             "caption": "All the latest stories in culture and books.",
             "credits": "The credits"
           },
@@ -102,6 +102,11 @@
               "text": "When Thatcher joined the campaign trail for the 2001 general election, she was followed closely by the media. After several minor strokes, however, it was announced in 2002 that she would cut back her heavy schedule. "
             }]
           }]
+        },
+        {
+          "name": "ad",
+          "attributes": {},
+          "children": []
         },
         {
           "name": "paragraph",

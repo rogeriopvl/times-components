@@ -6,7 +6,7 @@ import Image from "@times-components/image";
 import ArticleImage from "@times-components/article-image";
 
 import listViewDataHelper from "./data-helper";
-import styles from "./style/article-style";
+import styles from "./styles/article-style";
 import ArticleHeader from "./article-header";
 import ArticleMeta from "./article-meta";
 import {
