@@ -295,6 +295,8 @@ storiesOf("BrightcoveVideo", module)
       onProgress={action("progress")}
       onFinish={action("finish")}
       onDuration={action("duration")}
+      onEnterFullscreen={action("enterFullscreen")}
+      onExitFullscreen={action("exitFullscreen")}
     />
   ))
   .add("Launcher with event listeners", () => (
@@ -307,6 +309,8 @@ storiesOf("BrightcoveVideo", module)
       onProgress={action("progress")}
       onFinish={action("finish")}
       onDuration={action("duration")}
+      onEnterFullscreen={action("enterFullscreen")}
+      onExitFullscreen={action("exitFullscreen")}
     />
   ))
   .add("Player with external controls", () => (

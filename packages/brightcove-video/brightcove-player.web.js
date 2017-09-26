@@ -18,6 +18,7 @@ class BrightcoveVideo extends Component {
     this.on("seeked", context.onSeeked.bind(context, this));
     this.on("timeupdate", context.onPlay.bind(context, this));
     this.on("durationchange", context.onDurationChange.bind(context, this));
+    this.on("fullscreenchange", context.onFullscreenChange.bind(context, this));
 
     this.contextmenu({ disabled: true });
   }
@@ -50,7 +51,7 @@ class BrightcoveVideo extends Component {
       errors: [].concat(BrightcoveVideo.globalErrors),
       isPlaying: "paused",
       isFinished: false,
-      fullscreen: false,
+      isFullscreen: false,
       progress: 0
     };
   }
@@ -91,28 +92,37 @@ class BrightcoveVideo extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    const playerStatusChanged = this.state.isPlaying !== nextState.isPlaying;
+    const playingStatusChanged = this.state.isPlaying !== nextState.isPlaying;
+    const fullscreenStatusChanged =
+      this.state.isFullscreen !== nextState.isFullscreen;
+    const willFinish =
+      this.state.isFinished !== nextState.isFinished && nextState.isFinished;
+
+    if (playingStatusChanged) {
+      if (nextState.isPlaying) {
+        this.props.onPlay();
+      } else {
+        this.props.onPause();
+      }
+    }
+
+    if (fullscreenStatusChanged) {
+      if (nextState.isFullscreen) {
+        this.props.onEnterFullscreen();
+      } else {
+        this.props.onExitFullscreen();
+      }
+    }
 
     if (this.state.duration !== nextState.duration) {
       this.props.onDuration(nextState.duration);
-    }
-
-    if (playerStatusChanged && nextState.isPlaying) {
-      this.props.onPlay();
     }
 
     if (this.state.progress !== nextState.progress) {
       this.props.onProgress(nextState.progress);
     }
 
-    if (playerStatusChanged && !nextState.isPlaying) {
-      this.props.onPause();
-    }
-
-    if (
-      this.state.isFinished !== nextState.isFinished &&
-      nextState.isFinished
-    ) {
+    if (willFinish) {
       this.props.onFinish();
     }
 
@@ -156,6 +166,18 @@ class BrightcoveVideo extends Component {
 
   onDurationChange(player) {
     this.setState({ duration: BrightcoveVideo.getDurationMs(player) });
+  }
+
+  onFullscreenChange(player) {
+    if (player.isFullscreen()) {
+      this.setState({
+        isFullscreen: true
+      });
+    } else {
+      this.setState({
+        isFullscreen: false
+      });
+    }
   }
 
   setPlayer(player) {
