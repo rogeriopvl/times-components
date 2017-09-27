@@ -87,7 +87,7 @@
           "attributes": {
             "display": "primary",
             "ratio": "16:9",
-            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
+            "url": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8c029716-97a2-11e7-8c3c-cb45202c3d59.jpg?crop=160%2C90%2C-0%2C-0",
             "caption": "All the latest stories in culture and books.",
             "credits": "The credits"
           },
@@ -122,8 +122,8 @@
           "name": "image",
           "attributes": {
             "display": "secondary",
-            "ratio": "16:9",
-            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
+            "ratio": "3:2",
+            "url": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8c029716-97a2-11e7-8c3c-cb45202c3d59.jpg?crop=600%2C400%2C-0%2C-0",
             "caption": "All the latest stories in culture and books.",
             "credits": "The credits"
           },
@@ -153,8 +153,8 @@
           "name": "image",
           "attributes": {
             "display": "inline",
-            "ratio": "16:9",
-            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
+            "ratio": "1:50",
+            "url": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8c029716-97a2-11e7-8c3c-cb45202c3d59.jpg?crop=100%2C150%2C-0%2C-0",
             "caption": "All the latest stories in culture and books.",
             "credits": "The credits"
           },
@@ -169,6 +169,17 @@
               "text": "Margaret Thatcher was one of the greatest British politicians of the 20th century. The first woman prime minister in Europe, she held the job for 11 years. In the 20th century no other prime minister had been in office for such a long unbroken period, and no one since Lord Liverpool (1812-27) had had such a long continuous run as Prime Minister. "
             }]
           }]
+        },
+        {
+          "name": "image",
+          "attributes": {
+            "display": "inline",
+            "ratio": "3:2",
+            "url": "https://www.thetimes.co.uk/imageserver/image/methode%2Ftimes%2Fprod%2Fweb%2Fbin%2F8c029716-97a2-11e7-8c3c-cb45202c3d59.jpg?crop=300%2C200%2C-0%2C-0",
+            "caption": "All the latest stories in culture and books.",
+            "credits": "The credits"
+          },
+          "children": []
         },
         {
           "name": "paragraph",
