@@ -119,6 +119,17 @@
           }]
         },
         {
+          "name": "image",
+          "attributes": {
+            "display": "secondary",
+            "ratio": "16:9",
+            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
+            "caption": "All the latest stories in culture and books.",
+            "credits": "The credits"
+          },
+          "children": []
+        },
+        {
           "name": "paragraph",
           "attributes": {},
           "children": [{
@@ -137,6 +148,17 @@
               "text": "She was driven by those beliefs to tackle the task of halting and reversing her country’s decline and to ensure that it played its full part in defending the freedoms of the democratic West. Her record and her personality will be the subject of continuing controversy. But no one will ever doubt her sincerity and her courage, and most will concede that the far-reaching changes she made would have been impossible without her. "
             }]
           }]
+        },
+        {
+          "name": "image",
+          "attributes": {
+            "display": "inline",
+            "ratio": "16:9",
+            "url": "https://static1.squarespace.com/static/54e8ba93e4b07c3f655b452e/t/56c2a04520c64707756f4267/1493764650017/",
+            "caption": "All the latest stories in culture and books.",
+            "credits": "The credits"
+          },
+          "children": []
         },
         {
           "name": "paragraph",
