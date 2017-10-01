@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     })
   },
   title: {
-    fontFamily: "TimesDigital-RegularSC",
+    fontFamily: "TimesDigitalW04-RegularSC",
     fontSize: 15,
     color: "#696969",
     ...Platform.select({
@@ -113,41 +113,28 @@ const ResponsiveStyles = {
 };
 
 const AuthorHead = props => {
-  const { name, title, twitter, bio, uri, responsive } = props;
+  const { name, title, twitter, bio, uri, style } = props;
 
   return (
-    <View style={[styles.wrapper, responsive.wrapper]} pointerEvents="box-none">
-      <View
-        accessibilityRole="banner"
-        style={[styles.container, responsive.container]}
-      >
-        <Text
-          accessibilityRole="heading"
-          aria-level="1"
-          style={[styles.name, responsive.name]}
-        >
+    <View style={styles.wrapper} pointerEvents="box-none">
+      <View accessibilityRole="banner" style={styles.container}>
+        <Text accessibilityRole="heading" aria-level="1" style={styles.name}>
           {name}
         </Text>
-        <Text
-          accessibilityRole="heading"
-          aria-level="2"
-          style={[styles.title, responsive.title]}
-        >
+        <Text accessibilityRole="heading" aria-level="2" style={styles.title}>
           {title.toLowerCase()}
         </Text>
         <TwitterLink handle={twitter} />
-        <Text style={styles.bio}>{renderTrees(bio)}</Text>
-        <View style={[styles.photoContainer, responsive.photoContainer]}>
-          <Image
-            source={{ uri }}
-            style={[styles.roundImage, responsive.roundImage]}
-          />
+        <Text style={styles.bio}>
+          {renderTrees(bio)}
+        </Text>
+        <View style={[styles.photoContainer, style.photoContainer]}>
+          <Image source={{ uri }} style={styles.roundImage} />
         </View>
       </View>
     </View>
   );
 };
-
 AuthorHead.defaultProps = {
   name: "",
   title: "",
