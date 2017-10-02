@@ -3,4 +3,4 @@ import { Text, View } from "react-native";
 import runTests from "./test-helper";
 
 jest.mock("WebView", () => "WebView");
-describe("Markup Native", runTests(Text, View));
+describe("Markup iOS", runTests(Text, View));

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Markup Native does not render a script tag 1`] = `<View />`;
+exports[`Markup Android does not render a script tag 1`] = `<View />`;
 
-exports[`Markup Native does not render an image tag 1`] = `<View />`;
+exports[`Markup Android does not render an image tag 1`] = `<View />`;
 
-exports[`Markup Native renders a mixture of tags 1`] = `
+exports[`Markup Android renders a mixture of tags 1`] = `
 <View>
   <View>
     <Text
@@ -56,7 +56,7 @@ exports[`Markup Native renders a mixture of tags 1`] = `
 </View>
 `;
 
-exports[`Markup Native renders a single paragraph 1`] = `
+exports[`Markup Android renders a single paragraph 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -66,7 +66,7 @@ exports[`Markup Native renders a single paragraph 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders multiple children 1`] = `
+exports[`Markup Android renders multiple children 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -94,7 +94,7 @@ exports[`Markup Native renders multiple children 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders multiple paragraphs 1`] = `
+exports[`Markup Android renders multiple paragraphs 1`] = `
 <View>
   <Text
     accessible={true}
@@ -113,7 +113,7 @@ exports[`Markup Native renders multiple paragraphs 1`] = `
 </View>
 `;
 
-exports[`Markup Native renders multiple paragraphs with ads 1`] = `
+exports[`Markup Android renders multiple paragraphs with ads 1`] = `
 <View>
   <Text
     accessible={true}
@@ -343,7 +343,7 @@ exports[`Markup Native renders multiple paragraphs with ads 1`] = `
               "borderStyle": "solid",
               "borderWidth": 1,
               "color": "#696969",
-              "fontFamily": "TimesDigitalW04",
+              "fontFamily": "TimesDigitalW04-Regular",
               "fontSize": 12,
               "letterSpacing": 1.5,
               "paddingBottom": 5,
@@ -390,7 +390,7 @@ exports[`Markup Native renders multiple paragraphs with ads 1`] = `
 </View>
 `;
 
-exports[`Markup Native renders tags nested within blocks 1`] = `
+exports[`Markup Android renders tags nested within blocks 1`] = `
 <View>
   Some text is here 
   <View>
@@ -411,7 +411,7 @@ exports[`Markup Native renders tags nested within blocks 1`] = `
 </View>
 `;
 
-exports[`Markup Native renders the anchor tag 1`] = `
+exports[`Markup Android renders the anchor tag 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -422,7 +422,7 @@ exports[`Markup Native renders the anchor tag 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders the bold tag 1`] = `
+exports[`Markup Android renders the bold tag 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -437,7 +437,7 @@ exports[`Markup Native renders the bold tag 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders the italic tag 1`] = `
+exports[`Markup Android renders the italic tag 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -452,7 +452,7 @@ exports[`Markup Native renders the italic tag 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders the span tag 1`] = `
+exports[`Markup Android renders the span tag 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
@@ -462,7 +462,7 @@ exports[`Markup Native renders the span tag 1`] = `
 </Text>
 `;
 
-exports[`Markup Native renders wrapped tags 1`] = `
+exports[`Markup Android renders wrapped tags 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
