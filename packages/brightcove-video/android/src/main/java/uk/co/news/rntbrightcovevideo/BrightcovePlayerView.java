@@ -31,6 +31,18 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
         this.setMediaController(new BrightcoveMediaController(this));
     }
 
+    public void initVideo(String videoId, String accountId, String policyKey, Boolean autoplay, Boolean isFullscreenButtonHidden) {
+        View fullScreenButton = this.findViewById(com.brightcove.player.R.id.full_screen);
+        fullScreenButton.setVisibility(isFullscreenButtonHidden ? View.GONE : View.VISIBLE);
+
+        mAutoplay = autoplay;
+
+        EventEmitter eventEmitter = setupEventEmitter();
+
+        Catalog catalog = new Catalog(eventEmitter, accountId, policyKey);
+        catalog.findVideoByID(videoId, createVideoListener());
+    }
+
     private EventEmitter setupEventEmitter() {
         final BrightcovePlayerView playerView = BrightcovePlayerView.this;
 
@@ -95,15 +107,15 @@ public class BrightcovePlayerView extends BrightcoveExoPlayerVideoView {
     }
 
     public void initVideo(String videoId, String accountId, String policyKey, Boolean autoplay, Boolean isFullscreenButtonHidden) {
-            View fullScreenButton = this.findViewById(com.brightcove.player.R.id.full_screen);
-            fullScreenButton.setVisibility(isFullscreenButtonHidden ? View.GONE : View.VISIBLE);
+        View fullScreenButton = this.findViewById(com.brightcove.player.R.id.full_screen);
+        fullScreenButton.setVisibility(isFullscreenButtonHidden ? View.GONE : View.VISIBLE);
 
-            mAutoplay = autoplay;
+        mAutoplay = autoplay;
 
-            EventEmitter eventEmitter = setupEventEmitter();
+        EventEmitter eventEmitter = setupEventEmitter();
 
-            Catalog catalog = new Catalog(eventEmitter, accountId, policyKey);
-            catalog.findVideoByID(videoId, createVideoListener());
+        Catalog catalog = new Catalog(eventEmitter, accountId, policyKey);
+        catalog.findVideoByID(videoId, createVideoListener());
     }
 
     @NonNull

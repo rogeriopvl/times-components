@@ -461,6 +461,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				87396A0C1EF3E8F70076CBAD /* Frameworks */,
+				E67D37F81F823E42006F213C /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -499,6 +500,14 @@
 				87396A381EF3E9F10076CBAD /* bcovpuiiconfont.ttf */,
 			);
 			name = "brightcove-video";
+			sourceTree = "<group>";
+		};
+		E67D37F81F823E42006F213C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F99A760D4DBA4C06BAA2763C /* libRNSVG.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		ED3A0B8E1F38C8B200048867 /* Products */ = {
