@@ -58,10 +58,12 @@
     "@times-components/article-headline": "0.6.0",
     "@times-components/article-image": "0.2.3",
     "@times-components/article-label": "0.3.1",
+    "@times-components/provider": "0.11.1",
     "@times-components/date-publication": "0.3.1",
     "@times-components/image": "1.4.2",
     "@times-components/markup": "0.7.5",
     "prop-types": "15.5.10",
+    "react-apollo": "1.4.16",
     "react-native-web": "0.0.119"
   },
   "peerDependencies": {
