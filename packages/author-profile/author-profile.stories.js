@@ -6,6 +6,7 @@ import { decorateAction } from "@storybook/addon-actions";
 import { AuthorProfileProvider } from "@times-components/provider";
 import { ApolloClient, IntrospectionFragmentMatcher } from "react-apollo";
 import { MockedProvider, mockNetworkInterface } from "react-apollo/test-utils";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { addTypenameToDocument } from "apollo-client";
 import { query as authorProfileQuery } from "@times-components/provider/author-profile-provider";
 import { query as articleListQuery } from "@times-components/provider/article-list-provider";
@@ -19,6 +20,21 @@ const preventDefaultedAction = decorateAction([
     return ["[SyntheticEvent (storybook prevented default)]", ...args];
   }
 ]);
+
+const articlesList = (skip, first) => ({
+  data: {
+    author: {
+      ...articleListFixture.data.author,
+      articles: {
+        ...articleListFixture.data.author.articles,
+        list: articleListFixture.data.author.articles.list.slice(
+          skip,
+          skip + first
+        )
+      }
+    }
+  }
+});
 
 const mocks = [
   {
@@ -35,36 +51,48 @@ const mocks = [
       query: addTypenameToDocument(articleListQuery),
       variables: {
         slug: "fiona-hamilton",
-        first: 6,
-        skip: 3,
+        first: 3,
+        skip: 0,
         imageRatio: "3:2"
       }
     },
-    result: articleListFixture
+    result: articlesList(0, 3)
   },
   {
     request: {
       query: addTypenameToDocument(articleListQuery),
       variables: {
         slug: "fiona-hamilton",
-        first: 6,
+        first: 3,
         skip: 3,
         imageRatio: "3:2"
       }
     },
-    result: articleListFixture
+    result: articlesList(3, 3)
   },
   {
     request: {
       query: addTypenameToDocument(articleListQuery),
       variables: {
         slug: "fiona-hamilton",
-        first: 9,
+        first: 3,
         skip: 6,
         imageRatio: "3:2"
       }
     },
-    result: articleListFixture
+    result: articlesList(6, 3)
+  },
+  {
+    request: {
+      query: addTypenameToDocument(articleListQuery),
+      variables: {
+        slug: "fiona-hamilton",
+        first: 3,
+        skip: 9,
+        imageRatio: "3:2"
+      }
+    },
+    result: articlesList(9, 3)
   }
 ];
 
@@ -96,8 +124,11 @@ const client = new ApolloClient({
   fragmentMatcher
 });
 
-const withMockProvider = child =>
-  <MockedProvider mocks={mocks} client={client}>{child}</MockedProvider>;
+const withMockProvider = child => (
+  <MockedProvider mocks={mocks} client={client}>
+    {child}
+  </MockedProvider>
+);
 
 storiesOf("AuthorProfile", module)
   .add("Default", () => {
@@ -133,19 +164,22 @@ storiesOf("AuthorProfile", module)
   .add("With Provider", () => {
     const onTwitterLinkPress = preventDefaultedAction("onTwitterLinkPress");
     const onArticlePress = preventDefaultedAction("onArticlePress");
+    const slug = "fiona-hamilton";
 
     return withMockProvider(
-      <AuthorProfileProvider slug="fiona-hamilton">
-        {({ author, isLoading, error }) =>
+      <AuthorProfileProvider slug={slug}>
+        {({ author, isLoading, error }) => (
           <AuthorProfile
             author={author}
             page={1}
             pageSize={3}
+            slug={slug}
             isLoading={isLoading}
             error={error}
             onTwitterLinkPress={onTwitterLinkPress}
             onArticlePress={onArticlePress}
-          />}
+          />
+        )}
       </AuthorProfileProvider>
     );
   });
